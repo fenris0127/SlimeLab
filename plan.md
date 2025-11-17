@@ -217,10 +217,10 @@
 - [x] **Implement**: unlockFeature 메서드
 
 ### 22. 연구 보너스
-- [ ] **Test**: 연구 완료 시 영구 보너스를 제공해야 함
-- [ ] **Implement**: PermanentBonus 시스템
-- [ ] **Test**: 보너스가 스택 가능해야 함
-- [ ] **Implement**: BonusStack 구현
+- [x] **Test**: 연구 완료 시 영구 보너스를 제공해야 함
+- [x] **Implement**: PermanentBonus 시스템
+- [x] **Test**: 보너스가 스택 가능해야 함
+- [x] **Implement**: BonusStack 구현
 
 ## Phase 8: 이벤트 시스템 (Event System)
 

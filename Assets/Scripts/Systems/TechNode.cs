@@ -15,6 +15,7 @@ namespace SlimeLab.Systems
         public int ResearchProgress { get; private set; }
         public string UnlockFeature { get; private set; }
         public List<TechNode> Prerequisites { get; private set; }
+        public List<PermanentBonus> Bonuses { get; private set; }
 
         private Dictionary<ResourceType, int> _costs;
 
@@ -27,6 +28,7 @@ namespace SlimeLab.Systems
             ResearchTime = researchTime;
             ResearchProgress = 0;
             Prerequisites = new List<TechNode>();
+            Bonuses = new List<PermanentBonus>();
             _costs = new Dictionary<ResourceType, int>();
         }
 
@@ -128,6 +130,22 @@ namespace SlimeLab.Systems
         public bool IsFeatureUnlocked()
         {
             return State == ResearchState.Completed && !string.IsNullOrEmpty(UnlockFeature);
+        }
+
+        public void AddBonus(PermanentBonus bonus)
+        {
+            Bonuses.Add(bonus);
+        }
+
+        public void ApplyBonuses(BonusManager manager)
+        {
+            if (State == ResearchState.Completed)
+            {
+                foreach (var bonus in Bonuses)
+                {
+                    manager.ApplyBonus(bonus);
+                }
+            }
         }
     }
 }

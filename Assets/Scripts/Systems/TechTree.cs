@@ -62,5 +62,13 @@ namespace SlimeLab.Systems
         {
             return new List<TechNode>(_nodes);
         }
+
+        public void ApplyAllBonuses(BonusManager manager)
+        {
+            foreach (var node in GetCompletedNodes())
+            {
+                node.ApplyBonuses(manager);
+            }
+        }
     }
 }
