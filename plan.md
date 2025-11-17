@@ -199,10 +199,10 @@
 - [x] **Implement**: upgrade 시스템
 
 ### 20. Sorter (슬라임 분류기)
-- [ ] **Test**: Sorter가 슬라임을 속성별로 분류해야 함
-- [ ] **Implement**: SlimeSorter 클래스
-- [ ] **Test**: 커스텀 분류 규칙을 설정할 수 있어야 함
-- [ ] **Implement**: SortingRule 시스템
+- [x] **Test**: Sorter가 슬라임을 속성별로 분류해야 함
+- [x] **Implement**: SlimeSorter 클래스
+- [x] **Test**: 커스텀 분류 규칙을 설정할 수 있어야 함
+- [x] **Implement**: SortingRule 시스템
 
 ## Phase 7: 연구 시스템 (Research System)
 

@@ -78,5 +78,10 @@ namespace SlimeLab.Systems
         {
             return new List<ContainmentUnit>(_containmentUnits);
         }
+
+        public List<Slime> GetAllSlimes()
+        {
+            return new List<Slime>(_slimeStorage.Values);
+        }
     }
 }
