@@ -1,0 +1,309 @@
+# SlimeLab 개발 계획 - TDD 방식
+
+## 개발 지침
+- [ ] 표시된 항목을 순서대로 진행
+- 각 테스트를 먼저 작성하고 실패를 확인
+- 테스트가 통과할 최소한의 코드만 구현
+- 테스트 통과 후 리팩토링 진행
+- 완료된 항목은 [x]로 표시
+
+## 프로젝트 초기 설정
+
+### 1. 프로젝트 구조 생성
+- [ ] **Test**: 프로젝트 디렉토리 구조 테스트 작성
+  - src/, tests/, assets/, docs/ 디렉토리 존재 확인
+- [ ] **Implement**: 디렉토리 구조 생성
+- [ ] **Test**: package.json 파일 존재 및 기본 설정 테스트
+- [ ] **Implement**: package.json 생성 및 의존성 설정
+
+### 2. 테스트 환경 설정
+- [ ] **Test**: Jest 설정 파일 존재 테스트
+- [ ] **Implement**: Jest 설정 및 테스트 헬퍼 생성
+- [ ] **Test**: 첫 번째 통합 테스트 실행 확인
+- [ ] **Implement**: 테스트 스크립트 설정
+
+## Phase 1: 핵심 도메인 모델 (Core Domain Models)
+
+### 3. Slime 엔티티 기본 구현
+- [ ] **Test**: Slime 객체가 ID를 가져야 함
+- [ ] **Implement**: Slime 클래스 생성 with ID
+- [ ] **Test**: Slime이 이름을 가져야 함
+- [ ] **Implement**: name 속성 추가
+- [ ] **Test**: Slime이 기본 속성(element)을 가져야 함 (fire, water, electric, neutral)
+- [ ] **Implement**: element 속성 및 enum 추가
+- [ ] **Test**: Slime이 레벨을 가져야 함 (기본값 1)
+- [ ] **Implement**: level 속성 추가
+- [ ] **Test**: Slime이 경험치를 가져야 함 (기본값 0)
+- [ ] **Implement**: experience 속성 추가
+
+### 4. SlimeStats 구현
+- [ ] **Test**: SlimeStats가 HP를 가져야 함
+- [ ] **Implement**: SlimeStats 클래스 생성 with HP
+- [ ] **Test**: SlimeStats가 공격력을 가져야 함
+- [ ] **Implement**: attack 속성 추가
+- [ ] **Test**: SlimeStats가 방어력을 가져야 함
+- [ ] **Implement**: defense 속성 추가
+- [ ] **Test**: SlimeStats가 속도를 가져야 함
+- [ ] **Implement**: speed 속성 추가
+- [ ] **Test**: Slime이 SlimeStats를 가져야 함
+- [ ] **Implement**: Slime에 stats 속성 추가
+
+### 5. Resource 시스템
+- [ ] **Test**: Resource 타입 enum이 존재해야 함 (food, material, energy, research)
+- [ ] **Implement**: ResourceType enum 생성
+- [ ] **Test**: Resource 객체가 타입과 수량을 가져야 함
+- [ ] **Implement**: Resource 클래스 생성
+- [ ] **Test**: ResourceInventory가 자원을 추가할 수 있어야 함
+- [ ] **Implement**: ResourceInventory 클래스 및 add 메서드
+- [ ] **Test**: ResourceInventory가 자원을 소비할 수 있어야 함
+- [ ] **Implement**: consume 메서드 구현
+- [ ] **Test**: ResourceInventory가 자원 부족 시 예외를 던져야 함
+- [ ] **Implement**: InsufficientResourceError 구현
+
+## Phase 2: 연구소 시스템 (Laboratory System)
+
+### 6. Laboratory 기본 구현
+- [ ] **Test**: Laboratory가 ID와 이름을 가져야 함
+- [ ] **Implement**: Laboratory 클래스 생성
+- [ ] **Test**: Laboratory가 슬라임을 보관할 수 있어야 함
+- [ ] **Implement**: slimeStorage 컬렉션 추가
+- [ ] **Test**: Laboratory가 최대 보관 용량을 가져야 함
+- [ ] **Implement**: maxCapacity 속성 추가
+- [ ] **Test**: Laboratory가 슬라임을 추가할 수 있어야 함
+- [ ] **Implement**: addSlime 메서드 구현
+- [ ] **Test**: 용량 초과 시 예외를 던져야 함
+- [ ] **Implement**: CapacityExceededError 구현
+
+### 7. Containment Unit (슬라임 격납 시설)
+- [ ] **Test**: ContainmentUnit이 하나의 슬라임을 보관할 수 있어야 함
+- [ ] **Implement**: ContainmentUnit 클래스 생성
+- [ ] **Test**: ContainmentUnit이 환경 타입을 가져야 함
+- [ ] **Implement**: environmentType 속성 추가
+- [ ] **Test**: 슬라임 속성과 환경이 맞지 않으면 효율이 떨어져야 함
+- [ ] **Implement**: getEfficiency 메서드 구현
+- [ ] **Test**: Laboratory가 여러 ContainmentUnit을 가져야 함
+- [ ] **Implement**: containmentUnits 컬렉션 추가
+
+### 8. 슬라임 먹이 시스템
+- [ ] **Test**: Slime이 배고픔 수치를 가져야 함
+- [ ] **Implement**: hunger 속성 추가
+- [ ] **Test**: 시간이 지나면 배고픔이 증가해야 함
+- [ ] **Implement**: increaseHunger 메서드 구현
+- [ ] **Test**: Feed 액션으로 슬라임에게 먹이를 줄 수 있어야 함
+- [ ] **Implement**: FeedAction 클래스 구현
+- [ ] **Test**: 먹이를 주면 배고픔이 감소하고 경험치가 증가해야 함
+- [ ] **Implement**: feed 메서드 구현
+- [ ] **Test**: 배고픔이 최대치를 넘으면 슬라임 상태가 unhappy가 되어야 함
+- [ ] **Implement**: SlimeMood enum 및 상태 관리 구현
+
+## Phase 3: 유전자 조합 시스템 (Genetics System)
+
+### 9. Gene 기본 구현
+- [ ] **Test**: Gene이 고유 ID와 이름을 가져야 함
+- [ ] **Implement**: Gene 클래스 생성
+- [ ] **Test**: Gene이 dominant/recessive 타입을 가져야 함
+- [ ] **Implement**: GeneType enum 및 속성 추가
+- [ ] **Test**: Slime이 Gene 컬렉션을 가져야 함
+- [ ] **Implement**: Slime에 genes 속성 추가
+
+### 10. 교배 시스템 (Breeding)
+- [ ] **Test**: BreedingChamber가 두 슬라임을 받을 수 있어야 함
+- [ ] **Implement**: BreedingChamber 클래스 생성
+- [ ] **Test**: 호환되지 않는 슬라임 교배 시 실패해야 함
+- [ ] **Implement**: checkCompatibility 메서드 구현
+- [ ] **Test**: 교배 시작 시 자원을 소비해야 함
+- [ ] **Implement**: startBreeding 메서드 구현
+- [ ] **Test**: 교배 완료까지 시간이 필요해야 함
+- [ ] **Implement**: breedingDuration 및 타이머 구현
+- [ ] **Test**: 교배 결과로 새로운 슬라임이 생성되어야 함
+- [ ] **Implement**: completeBreeding 메서드 구현
+
+### 11. 유전자 조합 규칙
+- [ ] **Test**: 부모의 dominant gene이 자식에게 우선 전달되어야 함
+- [ ] **Implement**: inheritGenes 메서드 구현
+- [ ] **Test**: 특정 gene 조합이 특별한 결과를 만들어야 함
+- [ ] **Implement**: GeneComboRegistry 구현
+- [ ] **Test**: 돌연변이가 낮은 확률로 발생해야 함
+- [ ] **Implement**: mutation 시스템 구현
+
+## Phase 4: 진화 시스템 (Evolution System)
+
+### 12. Evolution 기본 구현
+- [ ] **Test**: Slime이 특정 레벨에 도달하면 진화 가능해야 함
+- [ ] **Implement**: canEvolve 메서드 구현
+- [ ] **Test**: 진화에 특수 아이템이 필요해야 함
+- [ ] **Implement**: EvolutionItem 클래스 생성
+- [ ] **Test**: 진화 시 새로운 형태로 변해야 함
+- [ ] **Implement**: evolve 메서드 구현
+- [ ] **Test**: 진화 트리가 존재해야 함
+- [ ] **Implement**: EvolutionTree 데이터 구조 구현
+
+### 13. 특수 진화 조건
+- [ ] **Test**: 환경 조건에 따른 진화가 가능해야 함
+- [ ] **Implement**: EnvironmentEvolution 구현
+- [ ] **Test**: 특정 시간대에만 가능한 진화가 있어야 함
+- [ ] **Implement**: TimeBasedEvolution 구현
+- [ ] **Test**: 친밀도 기반 진화가 가능해야 함
+- [ ] **Implement**: AffinityEvolution 구현
+
+## Phase 5: 탐험 시스템 (Exploration System)
+
+### 14. Zone 기본 구현
+- [ ] **Test**: Zone이 ID, 이름, 난이도를 가져야 함
+- [ ] **Implement**: Zone 클래스 생성
+- [ ] **Test**: Zone이 그리드 기반 맵을 가져야 함
+- [ ] **Implement**: GridMap 클래스 구현
+- [ ] **Test**: Zone에 입장 조건이 있어야 함
+- [ ] **Implement**: ZoneRequirement 구현
+
+### 15. Expedition (원정대)
+- [ ] **Test**: Expedition이 슬라임 팀을 구성할 수 있어야 함
+- [ ] **Implement**: Expedition 클래스 생성
+- [ ] **Test**: 최대 팀 크기 제한이 있어야 함
+- [ ] **Implement**: maxTeamSize 검증
+- [ ] **Test**: 원정 시작 시 슬라임이 연구소에서 제거되어야 함
+- [ ] **Implement**: startExpedition 메서드 구현
+
+### 16. 전투 시스템
+- [ ] **Test**: Battle이 턴 기반으로 진행되어야 함
+- [ ] **Implement**: Battle 클래스 및 턴 시스템
+- [ ] **Test**: 슬라임 속도에 따라 행동 순서가 결정되어야 함
+- [ ] **Implement**: TurnOrder 계산 로직
+- [ ] **Test**: 기본 공격이 가능해야 함
+- [ ] **Implement**: AttackAction 구현
+- [ ] **Test**: 속성 상성이 데미지에 영향을 줘야 함
+- [ ] **Implement**: ElementalAdvantage 시스템
+
+### 17. 자원 수집
+- [ ] **Test**: Zone에서 자원을 발견할 수 있어야 함
+- [ ] **Implement**: ResourceNode 클래스
+- [ ] **Test**: 슬라임 능력에 따라 수집 효율이 달라야 함
+- [ ] **Implement**: gatherResource 메서드
+- [ ] **Test**: 원정 완료 시 수집한 자원을 획득해야 함
+- [ ] **Implement**: completeExpedition 메서드
+
+## Phase 6: 자동화 시스템 (Automation System)
+
+### 18. Feeder (자동 먹이 공급기)
+- [ ] **Test**: Feeder가 일정 간격으로 먹이를 공급해야 함
+- [ ] **Implement**: AutoFeeder 클래스 생성
+- [ ] **Test**: Feeder가 자원을 소비해야 함
+- [ ] **Implement**: consumeResource 로직
+- [ ] **Test**: Feeder를 ContainmentUnit에 연결할 수 있어야 함
+- [ ] **Implement**: attachFeeder 메서드
+
+### 19. Collector (자원 수집기)
+- [ ] **Test**: Collector가 슬라임이 생성하는 자원을 수집해야 함
+- [ ] **Implement**: ResourceCollector 클래스
+- [ ] **Test**: 수집 효율이 업그레이드 가능해야 함
+- [ ] **Implement**: upgrade 시스템
+
+### 20. Sorter (슬라임 분류기)
+- [ ] **Test**: Sorter가 슬라임을 속성별로 분류해야 함
+- [ ] **Implement**: SlimeSorter 클래스
+- [ ] **Test**: 커스텀 분류 규칙을 설정할 수 있어야 함
+- [ ] **Implement**: SortingRule 시스템
+
+## Phase 7: 연구 시스템 (Research System)
+
+### 21. Tech Tree
+- [ ] **Test**: TechNode가 연구 가능 상태를 가져야 함
+- [ ] **Implement**: TechNode 클래스
+- [ ] **Test**: 선행 연구가 완료되어야 연구 가능해야 함
+- [ ] **Implement**: prerequisite 시스템
+- [ ] **Test**: 연구에 자원과 시간이 필요해야 함
+- [ ] **Implement**: startResearch 메서드
+- [ ] **Test**: 연구 완료 시 새로운 기능이 해금되어야 함
+- [ ] **Implement**: unlockFeature 메서드
+
+### 22. 연구 보너스
+- [ ] **Test**: 연구 완료 시 영구 보너스를 제공해야 함
+- [ ] **Implement**: PermanentBonus 시스템
+- [ ] **Test**: 보너스가 스택 가능해야 함
+- [ ] **Implement**: BonusStack 구현
+
+## Phase 8: 이벤트 시스템 (Event System)
+
+### 23. Random Events
+- [ ] **Test**: RandomEvent가 확률적으로 발생해야 함
+- [ ] **Implement**: EventScheduler 클래스
+- [ ] **Test**: 이벤트가 선택지를 제공해야 함
+- [ ] **Implement**: EventChoice 시스템
+- [ ] **Test**: 선택에 따라 다른 결과가 발생해야 함
+- [ ] **Implement**: EventOutcome 처리
+
+### 24. Story Events
+- [ ] **Test**: 스토리 진행도에 따라 이벤트가 트리거되어야 함
+- [ ] **Implement**: StoryProgress 트래킹
+- [ ] **Test**: 스토리 이벤트가 새로운 콘텐츠를 해금해야 함
+- [ ] **Implement**: ContentUnlock 시스템
+
+## Phase 9: 저장/불러오기 시스템 (Save System)
+
+### 25. Save Game
+- [ ] **Test**: 게임 상태를 JSON으로 직렬화할 수 있어야 함
+- [ ] **Implement**: GameState serialization
+- [ ] **Test**: 저장 파일이 로컬 스토리지에 저장되어야 함
+- [ ] **Implement**: SaveManager 구현
+- [ ] **Test**: 자동 저장이 일정 간격으로 실행되어야 함
+- [ ] **Implement**: AutoSave 시스템
+
+### 26. Load Game
+- [ ] **Test**: 저장된 게임을 불러올 수 있어야 함
+- [ ] **Implement**: LoadManager 구현
+- [ ] **Test**: 버전 호환성을 체크해야 함
+- [ ] **Implement**: VersionMigration 시스템
+
+## Phase 10: UI 시스템 (UI System)
+
+### 27. Main UI Components
+- [ ] **Test**: SlimeCard 컴포넌트가 슬라임 정보를 표시해야 함
+- [ ] **Implement**: SlimeCard 컴포넌트
+- [ ] **Test**: ResourceBar가 자원 현황을 표시해야 함
+- [ ] **Implement**: ResourceBar 컴포넌트
+- [ ] **Test**: LabView가 연구소 상태를 시각화해야 함
+- [ ] **Implement**: LabView 컴포넌트
+
+### 28. Interaction System
+- [ ] **Test**: 드래그 앤 드롭으로 슬라임을 이동할 수 있어야 함
+- [ ] **Implement**: DragDrop 시스템
+- [ ] **Test**: 우클릭 메뉴가 컨텍스트 액션을 제공해야 함
+- [ ] **Implement**: ContextMenu 시스템
+
+## Phase 11: 사운드 시스템 (Sound System)
+
+### 29. Audio Manager
+- [ ] **Test**: AudioManager가 배경음악을 재생할 수 있어야 함
+- [ ] **Implement**: AudioManager 클래스
+- [ ] **Test**: 상황에 따라 BGM이 전환되어야 함
+- [ ] **Implement**: MusicTransition 시스템
+- [ ] **Test**: 효과음이 이벤트에 따라 재생되어야 함
+- [ ] **Implement**: SoundEffect 시스템
+
+## Phase 12: 최적화 및 마무리
+
+### 30. Performance
+- [ ] **Test**: 100개 이상의 슬라임 처리 시 60fps 유지해야 함
+- [ ] **Implement**: 최적화 (object pooling, culling)
+- [ ] **Test**: 메모리 누수가 없어야 함
+- [ ] **Implement**: 메모리 관리 개선
+
+### 31. Polish
+- [ ] **Test**: 모든 사용자 액션에 피드백이 있어야 함
+- [ ] **Implement**: Visual/Audio 피드백 추가
+- [ ] **Test**: 튜토리얼이 핵심 기능을 설명해야 함
+- [ ] **Implement**: Tutorial 시스템
+
+## 완료 기준
+- 모든 테스트가 통과
+- 코드 커버리지 80% 이상
+- 성능 목표 달성
+- 사용자 피드백 반영
+
+## 다음 단계
+"go" 명령어를 입력하면 다음 미완료 테스트를 찾아 구현합니다.
+각 단계는:
+1. 테스트 작성 (RED)
+2. 최소 구현 (GREEN)
+3. 리팩토링 (REFACTOR)
+순서로 진행됩니다.
