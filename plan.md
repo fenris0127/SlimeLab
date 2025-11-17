@@ -283,10 +283,10 @@
 ## Phase 12: 최적화 및 마무리
 
 ### 30. Performance
-- [ ] **Test**: 100개 이상의 슬라임 처리 시 60fps 유지해야 함
-- [ ] **Implement**: 최적화 (object pooling, culling)
-- [ ] **Test**: 메모리 누수가 없어야 함
-- [ ] **Implement**: 메모리 관리 개선
+- [x] **Test**: 100개 이상의 슬라임 처리 시 60fps 유지해야 함
+- [x] **Implement**: 최적화 (object pooling, culling)
+- [x] **Test**: 메모리 누수가 없어야 함
+- [x] **Implement**: 메모리 관리 개선
 
 ### 31. Polish
 - [ ] **Test**: 모든 사용자 액션에 피드백이 있어야 함
