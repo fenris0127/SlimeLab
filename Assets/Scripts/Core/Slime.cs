@@ -100,5 +100,53 @@ namespace SlimeLab.Core
         {
             return Genes.Exists(g => g.ID == geneID);
         }
+
+        public void SetLevel(int level)
+        {
+            Level = level;
+        }
+
+        public bool CanEvolve()
+        {
+            return Level >= 10;
+        }
+
+        public void Evolve(EvolutionItem item)
+        {
+            if (!CanEvolve())
+            {
+                throw new InvalidOperationException($"Slime must be at least level 10 to evolve. Current level: {Level}");
+            }
+
+            // Check if evolution item matches slime element (optional, but recommended)
+            if (item.Element != Element)
+            {
+                // Allow evolution but maybe with reduced benefits in the future
+            }
+
+            // Use a simple evolution tree for determining evolution
+            var evolutionTree = new Systems.EvolutionTree();
+            var evolutionPath = evolutionTree.GetEvolutionPath(this);
+
+            if (evolutionPath != null)
+            {
+                // Apply evolution
+                Name = evolutionPath.TargetName;
+                Level += 1;
+                Stats.BoostStats(
+                    evolutionPath.HPBoost,
+                    evolutionPath.AttackBoost,
+                    evolutionPath.DefenseBoost,
+                    evolutionPath.SpeedBoost
+                );
+            }
+            else
+            {
+                // Default evolution if no path found
+                Name = $"Evolved {Name}";
+                Level += 1;
+                Stats.BoostStats(20, 10, 5, 5);
+            }
+        }
     }
 }

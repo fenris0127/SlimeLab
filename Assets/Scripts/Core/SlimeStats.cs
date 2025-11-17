@@ -14,5 +14,13 @@ namespace SlimeLab.Core
             Defense = defense;
             Speed = speed;
         }
+
+        public void BoostStats(int hpBoost, int attackBoost, int defenseBoost, int speedBoost)
+        {
+            HP += hpBoost;
+            Attack += attackBoost;
+            Defense += defenseBoost;
+            Speed += speedBoost;
+        }
     }
 }

@@ -129,14 +129,14 @@
 ## Phase 4: 진화 시스템 (Evolution System)
 
 ### 12. Evolution 기본 구현
-- [ ] **Test**: Slime이 특정 레벨에 도달하면 진화 가능해야 함
-- [ ] **Implement**: canEvolve 메서드 구현
-- [ ] **Test**: 진화에 특수 아이템이 필요해야 함
-- [ ] **Implement**: EvolutionItem 클래스 생성
-- [ ] **Test**: 진화 시 새로운 형태로 변해야 함
-- [ ] **Implement**: evolve 메서드 구현
-- [ ] **Test**: 진화 트리가 존재해야 함
-- [ ] **Implement**: EvolutionTree 데이터 구조 구현
+- [x] **Test**: Slime이 특정 레벨에 도달하면 진화 가능해야 함
+- [x] **Implement**: canEvolve 메서드 구현
+- [x] **Test**: 진화에 특수 아이템이 필요해야 함
+- [x] **Implement**: EvolutionItem 클래스 생성
+- [x] **Test**: 진화 시 새로운 형태로 변해야 함
+- [x] **Implement**: evolve 메서드 구현
+- [x] **Test**: 진화 트리가 존재해야 함
+- [x] **Implement**: EvolutionTree 데이터 구조 구현
 
 ### 13. 특수 진화 조건
 - [ ] **Test**: 환경 조건에 따른 진화가 가능해야 함
