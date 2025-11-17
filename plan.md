@@ -233,10 +233,10 @@
 - [x] **Implement**: EventOutcome 처리
 
 ### 24. Story Events
-- [ ] **Test**: 스토리 진행도에 따라 이벤트가 트리거되어야 함
-- [ ] **Implement**: StoryProgress 트래킹
-- [ ] **Test**: 스토리 이벤트가 새로운 콘텐츠를 해금해야 함
-- [ ] **Implement**: ContentUnlock 시스템
+- [x] **Test**: 스토리 진행도에 따라 이벤트가 트리거되어야 함
+- [x] **Implement**: StoryProgress 트래킹
+- [x] **Test**: 스토리 이벤트가 새로운 콘텐츠를 해금해야 함
+- [x] **Implement**: ContentUnlock 시스템
 
 ## Phase 9: 저장/불러오기 시스템 (Save System)
 
