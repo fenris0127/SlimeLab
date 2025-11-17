@@ -10,6 +10,8 @@ namespace SlimeLab.Core
         public int Level { get; private set; }
         public int Experience { get; private set; }
         public SlimeStats Stats { get; private set; }
+        public int Hunger { get; private set; }
+        public SlimeMood Mood { get; private set; }
 
         public Slime(string name = "Unnamed Slime", ElementType element = ElementType.Neutral)
         {
@@ -19,6 +21,8 @@ namespace SlimeLab.Core
             Level = 1;
             Experience = 0;
             Stats = InitializeStats(element);
+            Hunger = 0;
+            Mood = SlimeMood.Happy;
         }
 
         private SlimeStats InitializeStats(ElementType element)
@@ -41,6 +45,38 @@ namespace SlimeLab.Core
                 case ElementType.Neutral:
                 default:
                     return new SlimeStats(baseHP, baseAttack, baseDefense, baseSpeed);
+            }
+        }
+
+        public void IncreaseHunger(int amount)
+        {
+            Hunger = Math.Min(Hunger + amount, 100);
+            UpdateMood();
+        }
+
+        public void Feed(int amount)
+        {
+            Hunger = Math.Max(Hunger - amount, 0);
+
+            // Gain experience from feeding
+            Experience += amount / 2;
+
+            UpdateMood();
+        }
+
+        private void UpdateMood()
+        {
+            if (Hunger >= 91)
+            {
+                Mood = SlimeMood.Unhappy;
+            }
+            else if (Hunger >= 61)
+            {
+                Mood = SlimeMood.Sad;
+            }
+            else
+            {
+                Mood = SlimeMood.Happy;
             }
         }
     }

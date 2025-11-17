@@ -80,5 +80,147 @@ namespace SlimeLab.Tests
             Assert.GreaterOrEqual(slime.Stats.Defense, 0);
             Assert.Greater(slime.Stats.Speed, 0);
         }
+
+        [Test]
+        public void Slime_ShouldHaveHungerLevel()
+        {
+            // Arrange & Act
+            var slime = new Slime();
+
+            // Assert
+            Assert.GreaterOrEqual(slime.Hunger, 0);
+            Assert.LessOrEqual(slime.Hunger, 100);
+        }
+
+        [Test]
+        public void Slime_ShouldStartWithZeroHunger()
+        {
+            // Arrange & Act
+            var slime = new Slime();
+
+            // Assert
+            Assert.AreEqual(0, slime.Hunger);
+        }
+
+        [Test]
+        public void Slime_HungerCanIncrease()
+        {
+            // Arrange
+            var slime = new Slime();
+            int initialHunger = slime.Hunger;
+
+            // Act
+            slime.IncreaseHunger(10);
+
+            // Assert
+            Assert.AreEqual(initialHunger + 10, slime.Hunger);
+        }
+
+        [Test]
+        public void Slime_HungerCannotExceed100()
+        {
+            // Arrange
+            var slime = new Slime();
+
+            // Act
+            slime.IncreaseHunger(150);
+
+            // Assert
+            Assert.AreEqual(100, slime.Hunger);
+        }
+
+        [Test]
+        public void Slime_CanBeFed()
+        {
+            // Arrange
+            var slime = new Slime();
+            slime.IncreaseHunger(50);
+
+            // Act
+            slime.Feed(30);
+
+            // Assert
+            Assert.AreEqual(20, slime.Hunger);
+        }
+
+        [Test]
+        public void Slime_FeedingDecreasesHungerAndIncreasesExperience()
+        {
+            // Arrange
+            var slime = new Slime();
+            slime.IncreaseHunger(40);
+            int initialExp = slime.Experience;
+
+            // Act
+            slime.Feed(20);
+
+            // Assert
+            Assert.AreEqual(20, slime.Hunger);
+            Assert.Greater(slime.Experience, initialExp);
+        }
+
+        [Test]
+        public void Slime_HungerCannotGoBelowZero()
+        {
+            // Arrange
+            var slime = new Slime();
+            slime.IncreaseHunger(10);
+
+            // Act
+            slime.Feed(20);
+
+            // Assert
+            Assert.AreEqual(0, slime.Hunger);
+        }
+
+        [Test]
+        public void Slime_ShouldHaveMood()
+        {
+            // Arrange & Act
+            var slime = new Slime();
+
+            // Assert
+            Assert.AreEqual(SlimeMood.Happy, slime.Mood);
+        }
+
+        [Test]
+        public void Slime_BecomesSadWhenVeryHungry()
+        {
+            // Arrange
+            var slime = new Slime();
+
+            // Act
+            slime.IncreaseHunger(80);
+
+            // Assert
+            Assert.AreEqual(SlimeMood.Sad, slime.Mood);
+        }
+
+        [Test]
+        public void Slime_BecomesUnhappyWhenExtremelyHungry()
+        {
+            // Arrange
+            var slime = new Slime();
+
+            // Act
+            slime.IncreaseHunger(100);
+
+            // Assert
+            Assert.AreEqual(SlimeMood.Unhappy, slime.Mood);
+        }
+
+        [Test]
+        public void Slime_BecomesHappyAfterBeingFed()
+        {
+            // Arrange
+            var slime = new Slime();
+            slime.IncreaseHunger(90);
+
+            // Act
+            slime.Feed(70);
+
+            // Assert
+            Assert.AreEqual(SlimeMood.Happy, slime.Mood);
+        }
     }
 }

@@ -85,16 +85,16 @@
 - [x] **Implement**: containmentUnits 컬렉션 추가
 
 ### 8. 슬라임 먹이 시스템
-- [ ] **Test**: Slime이 배고픔 수치를 가져야 함
-- [ ] **Implement**: hunger 속성 추가
-- [ ] **Test**: 시간이 지나면 배고픔이 증가해야 함
-- [ ] **Implement**: increaseHunger 메서드 구현
-- [ ] **Test**: Feed 액션으로 슬라임에게 먹이를 줄 수 있어야 함
-- [ ] **Implement**: FeedAction 클래스 구현
-- [ ] **Test**: 먹이를 주면 배고픔이 감소하고 경험치가 증가해야 함
-- [ ] **Implement**: feed 메서드 구현
-- [ ] **Test**: 배고픔이 최대치를 넘으면 슬라임 상태가 unhappy가 되어야 함
-- [ ] **Implement**: SlimeMood enum 및 상태 관리 구현
+- [x] **Test**: Slime이 배고픔 수치를 가져야 함
+- [x] **Implement**: hunger 속성 추가
+- [x] **Test**: 시간이 지나면 배고픔이 증가해야 함
+- [x] **Implement**: increaseHunger 메서드 구현
+- [x] **Test**: Feed 액션으로 슬라임에게 먹이를 줄 수 있어야 함
+- [x] **Implement**: FeedAction 클래스 구현 (Feed 메서드로 직접 구현)
+- [x] **Test**: 먹이를 주면 배고픔이 감소하고 경험치가 증가해야 함
+- [x] **Implement**: feed 메서드 구현
+- [x] **Test**: 배고픔이 최대치를 넘으면 슬라임 상태가 unhappy가 되어야 함
+- [x] **Implement**: SlimeMood enum 및 상태 관리 구현
 
 ## Phase 3: 유전자 조합 시스템 (Genetics System)
 
