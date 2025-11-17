@@ -107,20 +107,20 @@
 - [x] **Implement**: Slime에 genes 속성 추가
 
 ### 10. 교배 시스템 (Breeding)
-- [ ] **Test**: BreedingChamber가 두 슬라임을 받을 수 있어야 함
-- [ ] **Implement**: BreedingChamber 클래스 생성
-- [ ] **Test**: 호환되지 않는 슬라임 교배 시 실패해야 함
-- [ ] **Implement**: checkCompatibility 메서드 구현
-- [ ] **Test**: 교배 시작 시 자원을 소비해야 함
-- [ ] **Implement**: startBreeding 메서드 구현
-- [ ] **Test**: 교배 완료까지 시간이 필요해야 함
-- [ ] **Implement**: breedingDuration 및 타이머 구현
-- [ ] **Test**: 교배 결과로 새로운 슬라임이 생성되어야 함
-- [ ] **Implement**: completeBreeding 메서드 구현
+- [x] **Test**: BreedingChamber가 두 슬라임을 받을 수 있어야 함
+- [x] **Implement**: BreedingChamber 클래스 생성
+- [x] **Test**: 호환되지 않는 슬라임 교배 시 실패해야 함
+- [x] **Implement**: checkCompatibility 메서드 구현
+- [x] **Test**: 교배 시작 시 자원을 소비해야 함
+- [x] **Implement**: startBreeding 메서드 구현
+- [x] **Test**: 교배 완료까지 시간이 필요해야 함
+- [x] **Implement**: breedingDuration 및 타이머 구현
+- [x] **Test**: 교배 결과로 새로운 슬라임이 생성되어야 함
+- [x] **Implement**: completeBreeding 메서드 구현
 
 ### 11. 유전자 조합 규칙
-- [ ] **Test**: 부모의 dominant gene이 자식에게 우선 전달되어야 함
-- [ ] **Implement**: inheritGenes 메서드 구현
+- [x] **Test**: 부모의 dominant gene이 자식에게 우선 전달되어야 함
+- [x] **Implement**: inheritGenes 메서드 구현
 - [ ] **Test**: 특정 gene 조합이 특별한 결과를 만들어야 함
 - [ ] **Implement**: GeneComboRegistry 구현
 - [ ] **Test**: 돌연변이가 낮은 확률로 발생해야 함
