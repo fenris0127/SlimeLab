@@ -289,10 +289,10 @@
 - [x] **Implement**: 메모리 관리 개선
 
 ### 31. Polish
-- [ ] **Test**: 모든 사용자 액션에 피드백이 있어야 함
-- [ ] **Implement**: Visual/Audio 피드백 추가
-- [ ] **Test**: 튜토리얼이 핵심 기능을 설명해야 함
-- [ ] **Implement**: Tutorial 시스템
+- [x] **Test**: 모든 사용자 액션에 피드백이 있어야 함
+- [x] **Implement**: Visual/Audio 피드백 추가
+- [x] **Test**: 튜토리얼이 핵심 기능을 설명해야 함
+- [x] **Implement**: Tutorial 시스템
 
 ## 완료 기준
 - 모든 테스트가 통과
