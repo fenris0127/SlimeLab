@@ -149,12 +149,12 @@
 ## Phase 5: 탐험 시스템 (Exploration System)
 
 ### 14. Zone 기본 구현
-- [ ] **Test**: Zone이 ID, 이름, 난이도를 가져야 함
-- [ ] **Implement**: Zone 클래스 생성
-- [ ] **Test**: Zone이 그리드 기반 맵을 가져야 함
-- [ ] **Implement**: GridMap 클래스 구현
-- [ ] **Test**: Zone에 입장 조건이 있어야 함
-- [ ] **Implement**: ZoneRequirement 구현
+- [x] **Test**: Zone이 ID, 이름, 난이도를 가져야 함
+- [x] **Implement**: Zone 클래스 생성
+- [x] **Test**: Zone이 그리드 기반 맵을 가져야 함
+- [x] **Implement**: GridMap 클래스 구현
+- [x] **Test**: Zone에 입장 조건이 있어야 함
+- [x] **Implement**: ZoneRequirement 구현
 
 ### 15. Expedition (원정대)
 - [ ] **Test**: Expedition이 슬라임 팀을 구성할 수 있어야 함
