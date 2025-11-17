@@ -193,10 +193,10 @@
 - [x] **Implement**: attachFeeder 메서드
 
 ### 19. Collector (자원 수집기)
-- [ ] **Test**: Collector가 슬라임이 생성하는 자원을 수집해야 함
-- [ ] **Implement**: ResourceCollector 클래스
-- [ ] **Test**: 수집 효율이 업그레이드 가능해야 함
-- [ ] **Implement**: upgrade 시스템
+- [x] **Test**: Collector가 슬라임이 생성하는 자원을 수집해야 함
+- [x] **Implement**: ResourceCollector 클래스
+- [x] **Test**: 수집 효율이 업그레이드 가능해야 함
+- [x] **Implement**: upgrade 시스템
 
 ### 20. Sorter (슬라임 분류기)
 - [ ] **Test**: Sorter가 슬라임을 속성별로 분류해야 함

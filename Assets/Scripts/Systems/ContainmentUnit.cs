@@ -8,6 +8,7 @@ namespace SlimeLab.Systems
         public bool HasSlime => AssignedSlime != null;
         public EnvironmentType EnvironmentType { get; private set; }
         public AutoFeeder Feeder { get; private set; }
+        public ResourceCollector Collector { get; private set; }
 
         public ContainmentUnit(EnvironmentType environmentType = EnvironmentType.Standard)
         {
@@ -23,6 +24,12 @@ namespace SlimeLab.Systems
             {
                 Feeder.AttachSlime(slime);
             }
+
+            // If collector is attached, attach the slime to it
+            if (Collector != null)
+            {
+                Collector.AttachSlime(slime);
+            }
         }
 
         public Slime RemoveSlime()
@@ -34,6 +41,12 @@ namespace SlimeLab.Systems
             if (Feeder != null)
             {
                 Feeder.DetachSlime();
+            }
+
+            // Detach slime from collector if attached
+            if (Collector != null)
+            {
+                Collector.DetachSlime();
             }
 
             return slime;
@@ -99,12 +112,38 @@ namespace SlimeLab.Systems
             }
         }
 
+        public void AttachCollector(ResourceCollector collector)
+        {
+            Collector = collector;
+
+            // If there's already a slime assigned, attach it to the collector
+            if (HasSlime)
+            {
+                Collector.AttachSlime(AssignedSlime);
+            }
+        }
+
+        public void DetachCollector()
+        {
+            if (Collector != null)
+            {
+                Collector.DetachSlime();
+                Collector = null;
+            }
+        }
+
         public void Update(int deltaTime)
         {
             // Update feeder if attached
             if (Feeder != null)
             {
                 Feeder.Update(deltaTime);
+            }
+
+            // Update collector if attached
+            if (Collector != null)
+            {
+                Collector.Update(deltaTime);
             }
         }
     }
