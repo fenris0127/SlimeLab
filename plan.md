@@ -49,16 +49,16 @@
 - [x] **Implement**: Slime에 stats 속성 추가
 
 ### 5. Resource 시스템
-- [ ] **Test**: Resource 타입 enum이 존재해야 함 (food, material, energy, research)
-- [ ] **Implement**: ResourceType enum 생성
-- [ ] **Test**: Resource 객체가 타입과 수량을 가져야 함
-- [ ] **Implement**: Resource 클래스 생성
-- [ ] **Test**: ResourceInventory가 자원을 추가할 수 있어야 함
-- [ ] **Implement**: ResourceInventory 클래스 및 add 메서드
-- [ ] **Test**: ResourceInventory가 자원을 소비할 수 있어야 함
-- [ ] **Implement**: consume 메서드 구현
-- [ ] **Test**: ResourceInventory가 자원 부족 시 예외를 던져야 함
-- [ ] **Implement**: InsufficientResourceError 구현
+- [x] **Test**: Resource 타입 enum이 존재해야 함 (food, material, energy, research)
+- [x] **Implement**: ResourceType enum 생성
+- [x] **Test**: Resource 객체가 타입과 수량을 가져야 함
+- [x] **Implement**: Resource 클래스 생성
+- [x] **Test**: ResourceInventory가 자원을 추가할 수 있어야 함
+- [x] **Implement**: ResourceInventory 클래스 및 add 메서드
+- [x] **Test**: ResourceInventory가 자원을 소비할 수 있어야 함
+- [x] **Implement**: consume 메서드 구현
+- [x] **Test**: ResourceInventory가 자원 부족 시 예외를 던져야 함
+- [x] **Implement**: InsufficientResourceError 구현
 
 ## Phase 2: 연구소 시스템 (Laboratory System)
 
