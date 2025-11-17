@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace SlimeLab.Core
 {
@@ -12,6 +13,7 @@ namespace SlimeLab.Core
         public SlimeStats Stats { get; private set; }
         public int Hunger { get; private set; }
         public SlimeMood Mood { get; private set; }
+        public List<Gene> Genes { get; private set; }
 
         public Slime(string name = "Unnamed Slime", ElementType element = ElementType.Neutral)
         {
@@ -23,6 +25,7 @@ namespace SlimeLab.Core
             Stats = InitializeStats(element);
             Hunger = 0;
             Mood = SlimeMood.Happy;
+            Genes = new List<Gene>();
         }
 
         private SlimeStats InitializeStats(ElementType element)
@@ -78,6 +81,24 @@ namespace SlimeLab.Core
             {
                 Mood = SlimeMood.Happy;
             }
+        }
+
+        public void AddGene(Gene gene)
+        {
+            if (gene != null && !HasGene(gene.ID))
+            {
+                Genes.Add(gene);
+            }
+        }
+
+        public Gene GetGene(string geneID)
+        {
+            return Genes.Find(g => g.ID == geneID);
+        }
+
+        public bool HasGene(string geneID)
+        {
+            return Genes.Exists(g => g.ID == geneID);
         }
     }
 }

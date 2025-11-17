@@ -222,5 +222,61 @@ namespace SlimeLab.Tests
             // Assert
             Assert.AreEqual(SlimeMood.Happy, slime.Mood);
         }
+
+        [Test]
+        public void Slime_ShouldHaveGenesCollection()
+        {
+            // Arrange & Act
+            var slime = new Slime();
+
+            // Assert
+            Assert.IsNotNull(slime.Genes);
+        }
+
+        [Test]
+        public void Slime_CanAddGenes()
+        {
+            // Arrange
+            var slime = new Slime();
+            var gene1 = new Gene("Fire Affinity", GeneType.Dominant);
+            var gene2 = new Gene("Speed Boost", GeneType.Recessive);
+
+            // Act
+            slime.AddGene(gene1);
+            slime.AddGene(gene2);
+
+            // Assert
+            Assert.AreEqual(2, slime.Genes.Count);
+        }
+
+        [Test]
+        public void Slime_CanRetrieveGenesById()
+        {
+            // Arrange
+            var slime = new Slime();
+            var gene = new Gene("Fire Affinity", GeneType.Dominant);
+            slime.AddGene(gene);
+
+            // Act
+            var retrievedGene = slime.GetGene(gene.ID);
+
+            // Assert
+            Assert.IsNotNull(retrievedGene);
+            Assert.AreEqual(gene.ID, retrievedGene.ID);
+            Assert.AreEqual(gene.Name, retrievedGene.Name);
+        }
+
+        [Test]
+        public void Slime_CanCheckIfGeneExists()
+        {
+            // Arrange
+            var slime = new Slime();
+            var gene = new Gene("Water Affinity");
+            slime.AddGene(gene);
+
+            // Act & Assert
+            Assert.IsTrue(slime.HasGene(gene.ID));
+            Assert.IsFalse(slime.HasGene("non-existent-id"));
+        }
     }
 }

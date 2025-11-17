@@ -99,12 +99,12 @@
 ## Phase 3: 유전자 조합 시스템 (Genetics System)
 
 ### 9. Gene 기본 구현
-- [ ] **Test**: Gene이 고유 ID와 이름을 가져야 함
-- [ ] **Implement**: Gene 클래스 생성
-- [ ] **Test**: Gene이 dominant/recessive 타입을 가져야 함
-- [ ] **Implement**: GeneType enum 및 속성 추가
-- [ ] **Test**: Slime이 Gene 컬렉션을 가져야 함
-- [ ] **Implement**: Slime에 genes 속성 추가
+- [x] **Test**: Gene이 고유 ID와 이름을 가져야 함
+- [x] **Implement**: Gene 클래스 생성
+- [x] **Test**: Gene이 dominant/recessive 타입을 가져야 함
+- [x] **Implement**: GeneType enum 및 속성 추가
+- [x] **Test**: Slime이 Gene 컬렉션을 가져야 함
+- [x] **Implement**: Slime에 genes 속성 추가
 
 ### 10. 교배 시스템 (Breeding)
 - [ ] **Test**: BreedingChamber가 두 슬라임을 받을 수 있어야 함
