@@ -241,12 +241,12 @@
 ## Phase 9: 저장/불러오기 시스템 (Save System)
 
 ### 25. Save Game
-- [ ] **Test**: 게임 상태를 JSON으로 직렬화할 수 있어야 함
-- [ ] **Implement**: GameState serialization
-- [ ] **Test**: 저장 파일이 로컬 스토리지에 저장되어야 함
-- [ ] **Implement**: SaveManager 구현
-- [ ] **Test**: 자동 저장이 일정 간격으로 실행되어야 함
-- [ ] **Implement**: AutoSave 시스템
+- [x] **Test**: 게임 상태를 JSON으로 직렬화할 수 있어야 함
+- [x] **Implement**: GameState serialization
+- [x] **Test**: 저장 파일이 로컬 스토리지에 저장되어야 함
+- [x] **Implement**: SaveManager 구현
+- [x] **Test**: 자동 저장이 일정 간격으로 실행되어야 함
+- [x] **Implement**: AutoSave 시스템
 
 ### 26. Load Game
 - [ ] **Test**: 저장된 게임을 불러올 수 있어야 함
