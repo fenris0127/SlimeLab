@@ -249,10 +249,10 @@
 - [x] **Implement**: AutoSave 시스템
 
 ### 26. Load Game
-- [ ] **Test**: 저장된 게임을 불러올 수 있어야 함
-- [ ] **Implement**: LoadManager 구현
-- [ ] **Test**: 버전 호환성을 체크해야 함
-- [ ] **Implement**: VersionMigration 시스템
+- [x] **Test**: 저장된 게임을 불러올 수 있어야 함
+- [x] **Implement**: LoadManager 구현
+- [x] **Test**: 버전 호환성을 체크해야 함
+- [x] **Implement**: VersionMigration 시스템
 
 ## Phase 10: UI 시스템 (UI System)
 
