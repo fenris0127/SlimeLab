@@ -273,12 +273,12 @@
 ## Phase 11: 사운드 시스템 (Sound System)
 
 ### 29. Audio Manager
-- [ ] **Test**: AudioManager가 배경음악을 재생할 수 있어야 함
-- [ ] **Implement**: AudioManager 클래스
-- [ ] **Test**: 상황에 따라 BGM이 전환되어야 함
-- [ ] **Implement**: MusicTransition 시스템
-- [ ] **Test**: 효과음이 이벤트에 따라 재생되어야 함
-- [ ] **Implement**: SoundEffect 시스템
+- [x] **Test**: AudioManager가 배경음악을 재생할 수 있어야 함
+- [x] **Implement**: AudioManager 클래스
+- [x] **Test**: 상황에 따라 BGM이 전환되어야 함
+- [x] **Implement**: MusicTransition 시스템
+- [x] **Test**: 효과음이 이벤트에 따라 재생되어야 함
+- [x] **Implement**: SoundEffect 시스템
 
 ## Phase 12: 최적화 및 마무리
 
