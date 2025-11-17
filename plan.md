@@ -157,12 +157,12 @@
 - [x] **Implement**: ZoneRequirement 구현
 
 ### 15. Expedition (원정대)
-- [ ] **Test**: Expedition이 슬라임 팀을 구성할 수 있어야 함
-- [ ] **Implement**: Expedition 클래스 생성
-- [ ] **Test**: 최대 팀 크기 제한이 있어야 함
-- [ ] **Implement**: maxTeamSize 검증
-- [ ] **Test**: 원정 시작 시 슬라임이 연구소에서 제거되어야 함
-- [ ] **Implement**: startExpedition 메서드 구현
+- [x] **Test**: Expedition이 슬라임 팀을 구성할 수 있어야 함
+- [x] **Implement**: Expedition 클래스 생성
+- [x] **Test**: 최대 팀 크기 제한이 있어야 함
+- [x] **Implement**: maxTeamSize 검증
+- [x] **Test**: 원정 시작 시 슬라임이 연구소에서 제거되어야 함
+- [x] **Implement**: startExpedition 메서드 구현
 
 ### 16. 전투 시스템
 - [ ] **Test**: Battle이 턴 기반으로 진행되어야 함
