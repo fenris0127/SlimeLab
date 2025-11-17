@@ -102,5 +102,72 @@ namespace SlimeLab.Tests
             Assert.AreEqual(0, lab.SlimeCount);
             Assert.IsFalse(lab.ContainsSlime(slime.ID));
         }
+
+        [Test]
+        public void Laboratory_CanHaveMultipleContainmentUnits()
+        {
+            // Arrange
+            var lab = new Laboratory("Test Lab", 10);
+
+            // Act
+            lab.AddContainmentUnit(new ContainmentUnit(EnvironmentType.Volcanic));
+            lab.AddContainmentUnit(new ContainmentUnit(EnvironmentType.Aquatic));
+            lab.AddContainmentUnit(new ContainmentUnit(EnvironmentType.Storm));
+
+            // Assert
+            Assert.AreEqual(3, lab.ContainmentUnitCount);
+        }
+
+        [Test]
+        public void Laboratory_CanGetContainmentUnitByIndex()
+        {
+            // Arrange
+            var lab = new Laboratory("Test Lab", 10);
+            var volcanicUnit = new ContainmentUnit(EnvironmentType.Volcanic);
+            var aquaticUnit = new ContainmentUnit(EnvironmentType.Aquatic);
+
+            lab.AddContainmentUnit(volcanicUnit);
+            lab.AddContainmentUnit(aquaticUnit);
+
+            // Act
+            var firstUnit = lab.GetContainmentUnit(0);
+            var secondUnit = lab.GetContainmentUnit(1);
+
+            // Assert
+            Assert.IsNotNull(firstUnit);
+            Assert.IsNotNull(secondUnit);
+            Assert.AreEqual(EnvironmentType.Volcanic, firstUnit.EnvironmentType);
+            Assert.AreEqual(EnvironmentType.Aquatic, secondUnit.EnvironmentType);
+        }
+
+        [Test]
+        public void Laboratory_CanRemoveContainmentUnit()
+        {
+            // Arrange
+            var lab = new Laboratory("Test Lab", 10);
+            var unit = new ContainmentUnit(EnvironmentType.Volcanic);
+            lab.AddContainmentUnit(unit);
+
+            // Act
+            lab.RemoveContainmentUnit(0);
+
+            // Assert
+            Assert.AreEqual(0, lab.ContainmentUnitCount);
+        }
+
+        [Test]
+        public void Laboratory_CanGetAllContainmentUnits()
+        {
+            // Arrange
+            var lab = new Laboratory("Test Lab", 10);
+            lab.AddContainmentUnit(new ContainmentUnit(EnvironmentType.Volcanic));
+            lab.AddContainmentUnit(new ContainmentUnit(EnvironmentType.Aquatic));
+
+            // Act
+            var units = lab.GetAllContainmentUnits();
+
+            // Assert
+            Assert.AreEqual(2, units.Count);
+        }
     }
 }

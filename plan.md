@@ -81,8 +81,8 @@
 - [x] **Implement**: environmentType 속성 추가
 - [x] **Test**: 슬라임 속성과 환경이 맞지 않으면 효율이 떨어져야 함
 - [x] **Implement**: getEfficiency 메서드 구현
-- [ ] **Test**: Laboratory가 여러 ContainmentUnit을 가져야 함
-- [ ] **Implement**: containmentUnits 컬렉션 추가
+- [x] **Test**: Laboratory가 여러 ContainmentUnit을 가져야 함
+- [x] **Implement**: containmentUnits 컬렉션 추가
 
 ### 8. 슬라임 먹이 시스템
 - [ ] **Test**: Slime이 배고픔 수치를 가져야 함
