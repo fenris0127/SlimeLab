@@ -274,5 +274,34 @@ namespace SlimeLab.Core
                 );
             }
         }
+
+        // Resource gathering
+        public Resource GatherResource(Systems.ResourceNode node)
+        {
+            // Cannot gather from depleted node
+            if (node.IsDepleted())
+            {
+                return null;
+            }
+
+            // Base gathering amount based on level (1-2 per level)
+            int baseAmount = Level + (Level / 2);
+
+            // Apply environmental bonus if applicable
+            float bonus = node.GetGatheringBonus(Element);
+            int gatheredAmount = (int)(baseAmount * bonus);
+
+            // Ensure we don't gather more than available
+            if (gatheredAmount > node.Amount)
+            {
+                gatheredAmount = node.Amount;
+            }
+
+            // Deplete the node
+            node.Deplete(gatheredAmount);
+
+            // Return the gathered resource
+            return new Resource(node.ResourceType, gatheredAmount);
+        }
     }
 }

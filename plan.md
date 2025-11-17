@@ -175,12 +175,12 @@
 - [x] **Implement**: ElementalAdvantage 시스템
 
 ### 17. 자원 수집
-- [ ] **Test**: Zone에서 자원을 발견할 수 있어야 함
-- [ ] **Implement**: ResourceNode 클래스
-- [ ] **Test**: 슬라임 능력에 따라 수집 효율이 달라야 함
-- [ ] **Implement**: gatherResource 메서드
-- [ ] **Test**: 원정 완료 시 수집한 자원을 획득해야 함
-- [ ] **Implement**: completeExpedition 메서드
+- [x] **Test**: Zone에서 자원을 발견할 수 있어야 함
+- [x] **Implement**: ResourceNode 클래스
+- [x] **Test**: 슬라임 능력에 따라 수집 효율이 달라야 함
+- [x] **Implement**: gatherResource 메서드
+- [x] **Test**: 원정 완료 시 수집한 자원을 획득해야 함
+- [x] **Implement**: completeExpedition 메서드
 
 ## Phase 6: 자동화 시스템 (Automation System)
 

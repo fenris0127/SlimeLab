@@ -10,14 +10,17 @@ namespace SlimeLab.Systems
         public int MaxTeamSize { get; private set; }
         public int TeamSize => _team.Count;
         public ExpeditionStatus Status { get; private set; }
+        public List<Resource> CollectedResources => new List<Resource>(_collectedResources);
 
         private Dictionary<string, Slime> _team;
+        private List<Resource> _collectedResources;
 
         public Expedition(Zone targetZone, int maxTeamSize = 4)
         {
             TargetZone = targetZone;
             MaxTeamSize = maxTeamSize;
             _team = new Dictionary<string, Slime>();
+            _collectedResources = new List<Resource>();
             Status = ExpeditionStatus.Preparing;
         }
 
@@ -84,6 +87,45 @@ namespace SlimeLab.Systems
 
             // Set status to active
             Status = ExpeditionStatus.Active;
+        }
+
+        public void AddCollectedResource(Resource resource)
+        {
+            _collectedResources.Add(resource);
+        }
+
+        public int GetResourcesByType(ResourceType resourceType)
+        {
+            int total = 0;
+            foreach (var resource in _collectedResources)
+            {
+                if (resource.Type == resourceType)
+                {
+                    total += resource.Amount;
+                }
+            }
+            return total;
+        }
+
+        public List<Resource> Complete(Laboratory laboratory)
+        {
+            // Can only complete if expedition is active
+            if (Status != ExpeditionStatus.Active)
+            {
+                throw new InvalidOperationException("Expedition must be active to complete");
+            }
+
+            // Return all team members to laboratory
+            foreach (var slime in _team.Values)
+            {
+                laboratory.AddSlime(slime);
+            }
+
+            // Set status to completed
+            Status = ExpeditionStatus.Completed;
+
+            // Return collected resources
+            return new List<Resource>(_collectedResources);
         }
     }
 }
