@@ -65,5 +65,20 @@ namespace SlimeLab.Tests
             // Assert
             Assert.AreEqual(0, slime.Experience);
         }
+
+        [Test]
+        public void Slime_ShouldHaveStats()
+        {
+            // Arrange & Act
+            var slime = new Slime();
+
+            // Assert
+            Assert.IsNotNull(slime.Stats);
+            Assert.IsInstanceOf<SlimeStats>(slime.Stats);
+            Assert.Greater(slime.Stats.HP, 0);
+            Assert.GreaterOrEqual(slime.Stats.Attack, 0);
+            Assert.GreaterOrEqual(slime.Stats.Defense, 0);
+            Assert.Greater(slime.Stats.Speed, 0);
+        }
     }
 }

@@ -25,28 +25,28 @@
 ## Phase 1: 핵심 도메인 모델 (Core Domain Models)
 
 ### 3. Slime 엔티티 기본 구현
-- [ ] **Test**: Slime 객체가 ID를 가져야 함
-- [ ] **Implement**: Slime 클래스 생성 with ID
-- [ ] **Test**: Slime이 이름을 가져야 함
-- [ ] **Implement**: name 속성 추가
-- [ ] **Test**: Slime이 기본 속성(element)을 가져야 함 (fire, water, electric, neutral)
-- [ ] **Implement**: element 속성 및 enum 추가
-- [ ] **Test**: Slime이 레벨을 가져야 함 (기본값 1)
-- [ ] **Implement**: level 속성 추가
-- [ ] **Test**: Slime이 경험치를 가져야 함 (기본값 0)
-- [ ] **Implement**: experience 속성 추가
+- [x] **Test**: Slime 객체가 ID를 가져야 함
+- [x] **Implement**: Slime 클래스 생성 with ID
+- [x] **Test**: Slime이 이름을 가져야 함
+- [x] **Implement**: name 속성 추가
+- [x] **Test**: Slime이 기본 속성(element)을 가져야 함 (fire, water, electric, neutral)
+- [x] **Implement**: element 속성 및 enum 추가
+- [x] **Test**: Slime이 레벨을 가져야 함 (기본값 1)
+- [x] **Implement**: level 속성 추가
+- [x] **Test**: Slime이 경험치를 가져야 함 (기본값 0)
+- [x] **Implement**: experience 속성 추가
 
 ### 4. SlimeStats 구현
-- [ ] **Test**: SlimeStats가 HP를 가져야 함
-- [ ] **Implement**: SlimeStats 클래스 생성 with HP
-- [ ] **Test**: SlimeStats가 공격력을 가져야 함
-- [ ] **Implement**: attack 속성 추가
-- [ ] **Test**: SlimeStats가 방어력을 가져야 함
-- [ ] **Implement**: defense 속성 추가
-- [ ] **Test**: SlimeStats가 속도를 가져야 함
-- [ ] **Implement**: speed 속성 추가
-- [ ] **Test**: Slime이 SlimeStats를 가져야 함
-- [ ] **Implement**: Slime에 stats 속성 추가
+- [x] **Test**: SlimeStats가 HP를 가져야 함
+- [x] **Implement**: SlimeStats 클래스 생성 with HP
+- [x] **Test**: SlimeStats가 공격력을 가져야 함
+- [x] **Implement**: attack 속성 추가
+- [x] **Test**: SlimeStats가 방어력을 가져야 함
+- [x] **Implement**: defense 속성 추가
+- [x] **Test**: SlimeStats가 속도를 가져야 함
+- [x] **Implement**: speed 속성 추가
+- [x] **Test**: Slime이 SlimeStats를 가져야 함
+- [x] **Implement**: Slime에 stats 속성 추가
 
 ### 5. Resource 시스템
 - [ ] **Test**: Resource 타입 enum이 존재해야 함 (food, material, energy, research)
