@@ -265,10 +265,10 @@
 - [x] **Implement**: LabView 컴포넌트
 
 ### 28. Interaction System
-- [ ] **Test**: 드래그 앤 드롭으로 슬라임을 이동할 수 있어야 함
-- [ ] **Implement**: DragDrop 시스템
-- [ ] **Test**: 우클릭 메뉴가 컨텍스트 액션을 제공해야 함
-- [ ] **Implement**: ContextMenu 시스템
+- [x] **Test**: 드래그 앤 드롭으로 슬라임을 이동할 수 있어야 함
+- [x] **Implement**: DragDrop 시스템
+- [x] **Test**: 우클릭 메뉴가 컨텍스트 액션을 제공해야 함
+- [x] **Implement**: ContextMenu 시스템
 
 ## Phase 11: 사운드 시스템 (Sound System)
 
