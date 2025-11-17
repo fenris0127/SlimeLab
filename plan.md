@@ -207,14 +207,14 @@
 ## Phase 7: 연구 시스템 (Research System)
 
 ### 21. Tech Tree
-- [ ] **Test**: TechNode가 연구 가능 상태를 가져야 함
-- [ ] **Implement**: TechNode 클래스
-- [ ] **Test**: 선행 연구가 완료되어야 연구 가능해야 함
-- [ ] **Implement**: prerequisite 시스템
-- [ ] **Test**: 연구에 자원과 시간이 필요해야 함
-- [ ] **Implement**: startResearch 메서드
-- [ ] **Test**: 연구 완료 시 새로운 기능이 해금되어야 함
-- [ ] **Implement**: unlockFeature 메서드
+- [x] **Test**: TechNode가 연구 가능 상태를 가져야 함
+- [x] **Implement**: TechNode 클래스
+- [x] **Test**: 선행 연구가 완료되어야 연구 가능해야 함
+- [x] **Implement**: prerequisite 시스템
+- [x] **Test**: 연구에 자원과 시간이 필요해야 함
+- [x] **Implement**: startResearch 메서드
+- [x] **Test**: 연구 완료 시 새로운 기능이 해금되어야 함
+- [x] **Implement**: unlockFeature 메서드
 
 ### 22. 연구 보너스
 - [ ] **Test**: 연구 완료 시 영구 보너스를 제공해야 함
