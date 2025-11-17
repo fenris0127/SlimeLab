@@ -257,12 +257,12 @@
 ## Phase 10: UI 시스템 (UI System)
 
 ### 27. Main UI Components
-- [ ] **Test**: SlimeCard 컴포넌트가 슬라임 정보를 표시해야 함
-- [ ] **Implement**: SlimeCard 컴포넌트
-- [ ] **Test**: ResourceBar가 자원 현황을 표시해야 함
-- [ ] **Implement**: ResourceBar 컴포넌트
-- [ ] **Test**: LabView가 연구소 상태를 시각화해야 함
-- [ ] **Implement**: LabView 컴포넌트
+- [x] **Test**: SlimeCard 컴포넌트가 슬라임 정보를 표시해야 함
+- [x] **Implement**: SlimeCard 컴포넌트
+- [x] **Test**: ResourceBar가 자원 현황을 표시해야 함
+- [x] **Implement**: ResourceBar 컴포넌트
+- [x] **Test**: LabView가 연구소 상태를 시각화해야 함
+- [x] **Implement**: LabView 컴포넌트
 
 ### 28. Interaction System
 - [ ] **Test**: 드래그 앤 드롭으로 슬라임을 이동할 수 있어야 함
