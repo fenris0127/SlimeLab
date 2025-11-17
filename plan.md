@@ -185,12 +185,12 @@
 ## Phase 6: 자동화 시스템 (Automation System)
 
 ### 18. Feeder (자동 먹이 공급기)
-- [ ] **Test**: Feeder가 일정 간격으로 먹이를 공급해야 함
-- [ ] **Implement**: AutoFeeder 클래스 생성
-- [ ] **Test**: Feeder가 자원을 소비해야 함
-- [ ] **Implement**: consumeResource 로직
-- [ ] **Test**: Feeder를 ContainmentUnit에 연결할 수 있어야 함
-- [ ] **Implement**: attachFeeder 메서드
+- [x] **Test**: Feeder가 일정 간격으로 먹이를 공급해야 함
+- [x] **Implement**: AutoFeeder 클래스 생성
+- [x] **Test**: Feeder가 자원을 소비해야 함
+- [x] **Implement**: consumeResource 로직
+- [x] **Test**: Feeder를 ContainmentUnit에 연결할 수 있어야 함
+- [x] **Implement**: attachFeeder 메서드
 
 ### 19. Collector (자원 수집기)
 - [ ] **Test**: Collector가 슬라임이 생성하는 자원을 수집해야 함

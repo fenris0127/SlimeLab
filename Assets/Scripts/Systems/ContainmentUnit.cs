@@ -7,6 +7,7 @@ namespace SlimeLab.Systems
         public Slime AssignedSlime { get; private set; }
         public bool HasSlime => AssignedSlime != null;
         public EnvironmentType EnvironmentType { get; private set; }
+        public AutoFeeder Feeder { get; private set; }
 
         public ContainmentUnit(EnvironmentType environmentType = EnvironmentType.Standard)
         {
@@ -16,12 +17,25 @@ namespace SlimeLab.Systems
         public void AssignSlime(Slime slime)
         {
             AssignedSlime = slime;
+
+            // If feeder is attached, attach the slime to it
+            if (Feeder != null)
+            {
+                Feeder.AttachSlime(slime);
+            }
         }
 
         public Slime RemoveSlime()
         {
             var slime = AssignedSlime;
             AssignedSlime = null;
+
+            // Detach slime from feeder if attached
+            if (Feeder != null)
+            {
+                Feeder.DetachSlime();
+            }
+
             return slime;
         }
 
@@ -62,6 +76,35 @@ namespace SlimeLab.Systems
                     return element == ElementType.Electric;
                 default:
                     return false;
+            }
+        }
+
+        public void AttachFeeder(AutoFeeder feeder)
+        {
+            Feeder = feeder;
+
+            // If there's already a slime assigned, attach it to the feeder
+            if (HasSlime)
+            {
+                Feeder.AttachSlime(AssignedSlime);
+            }
+        }
+
+        public void DetachFeeder()
+        {
+            if (Feeder != null)
+            {
+                Feeder.DetachSlime();
+                Feeder = null;
+            }
+        }
+
+        public void Update(int deltaTime)
+        {
+            // Update feeder if attached
+            if (Feeder != null)
+            {
+                Feeder.Update(deltaTime);
             }
         }
     }
