@@ -75,12 +75,12 @@
 - [x] **Implement**: CapacityExceededError 구현
 
 ### 7. Containment Unit (슬라임 격납 시설)
-- [ ] **Test**: ContainmentUnit이 하나의 슬라임을 보관할 수 있어야 함
-- [ ] **Implement**: ContainmentUnit 클래스 생성
-- [ ] **Test**: ContainmentUnit이 환경 타입을 가져야 함
-- [ ] **Implement**: environmentType 속성 추가
-- [ ] **Test**: 슬라임 속성과 환경이 맞지 않으면 효율이 떨어져야 함
-- [ ] **Implement**: getEfficiency 메서드 구현
+- [x] **Test**: ContainmentUnit이 하나의 슬라임을 보관할 수 있어야 함
+- [x] **Implement**: ContainmentUnit 클래스 생성
+- [x] **Test**: ContainmentUnit이 환경 타입을 가져야 함
+- [x] **Implement**: environmentType 속성 추가
+- [x] **Test**: 슬라임 속성과 환경이 맞지 않으면 효율이 떨어져야 함
+- [x] **Implement**: getEfficiency 메서드 구현
 - [ ] **Test**: Laboratory가 여러 ContainmentUnit을 가져야 함
 - [ ] **Implement**: containmentUnits 컬렉션 추가
 
