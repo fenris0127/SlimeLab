@@ -74,7 +74,7 @@ namespace SlimeLab.Systems
             return true;
         }
 
-        public List<VersionMigration> GetAllMigrations()
+        public IReadOnlyList<VersionMigration> GetAllMigrations()
         {
             return new List<VersionMigration>(_migrations);
         }

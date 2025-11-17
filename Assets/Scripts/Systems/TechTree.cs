@@ -24,28 +24,28 @@ namespace SlimeLab.Systems
             return _nodes.FirstOrDefault(n => n.Name == name);
         }
 
-        public List<TechNode> GetAvailableNodes()
+        public IReadOnlyList<TechNode> GetAvailableNodes()
         {
             return _nodes
                 .Where(n => n.IsAvailable() && n.State != ResearchState.Completed && n.State != ResearchState.InProgress)
                 .ToList();
         }
 
-        public List<TechNode> GetCompletedNodes()
+        public IReadOnlyList<TechNode> GetCompletedNodes()
         {
             return _nodes
                 .Where(n => n.State == ResearchState.Completed)
                 .ToList();
         }
 
-        public List<TechNode> GetNodesInProgress()
+        public IReadOnlyList<TechNode> GetNodesInProgress()
         {
             return _nodes
                 .Where(n => n.State == ResearchState.InProgress)
                 .ToList();
         }
 
-        public List<string> GetUnlockedFeatures()
+        public IReadOnlyList<string> GetUnlockedFeatures()
         {
             return _nodes
                 .Where(n => n.IsFeatureUnlocked())
@@ -58,7 +58,7 @@ namespace SlimeLab.Systems
             return _nodes.Any(n => n.IsFeatureUnlocked() && n.UnlockFeature == featureName);
         }
 
-        public List<TechNode> GetAllNodes()
+        public IReadOnlyList<TechNode> GetAllNodes()
         {
             return new List<TechNode>(_nodes);
         }

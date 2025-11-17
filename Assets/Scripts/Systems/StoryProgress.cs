@@ -39,7 +39,7 @@ namespace SlimeLab.Systems
             SetProgressValue(key, currentValue + amount);
         }
 
-        public List<string> GetAllMilestones()
+        public IReadOnlyList<string> GetAllMilestones()
         {
             return new List<string>(_milestones);
         }

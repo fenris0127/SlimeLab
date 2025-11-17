@@ -55,7 +55,7 @@ namespace SlimeLab.Systems
             return _resourceNodes.FirstOrDefault(node => node.X == x && node.Y == y);
         }
 
-        public List<ResourceNode> GetAllResourceNodes()
+        public IReadOnlyList<ResourceNode> GetAllResourceNodes()
         {
             return new List<ResourceNode>(_resourceNodes);
         }

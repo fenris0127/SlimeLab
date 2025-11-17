@@ -49,7 +49,7 @@ namespace SlimeLab.Systems
             }
         }
 
-        public List<FeedbackEntry> GetFeedbacks(string action)
+        public IReadOnlyList<FeedbackEntry> GetFeedbacks(string action)
         {
             return _feedbacks.ContainsKey(action) ? new List<FeedbackEntry>(_feedbacks[action]) : new List<FeedbackEntry>();
         }
@@ -63,7 +63,7 @@ namespace SlimeLab.Systems
             }
         }
 
-        public List<string> GetAllActions()
+        public IReadOnlyList<string> GetAllActions()
         {
             return new List<string>(_feedbacks.Keys);
         }

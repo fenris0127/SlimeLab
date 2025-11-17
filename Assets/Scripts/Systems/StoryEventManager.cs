@@ -19,14 +19,14 @@ namespace SlimeLab.Systems
             _events.Add(storyEvent);
         }
 
-        public List<StoryEvent> GetAvailableEvents(StoryProgress progress)
+        public IReadOnlyList<StoryEvent> GetAvailableEvents(StoryProgress progress)
         {
             return _events
                 .Where(e => !e.IsTriggered && e.IsAvailable(progress))
                 .ToList();
         }
 
-        public List<StoryEvent> CheckAndTriggerEvents(StoryProgress progress, ContentUnlockManager contentManager)
+        public IReadOnlyList<StoryEvent> CheckAndTriggerEvents(StoryProgress progress, ContentUnlockManager contentManager)
         {
             var triggeredEvents = new List<StoryEvent>();
             var availableEvents = GetAvailableEvents(progress);
@@ -41,14 +41,14 @@ namespace SlimeLab.Systems
             return triggeredEvents;
         }
 
-        public List<StoryEvent> GetTriggeredEvents()
+        public IReadOnlyList<StoryEvent> GetTriggeredEvents()
         {
             return _events
                 .Where(e => e.IsTriggered)
                 .ToList();
         }
 
-        public List<StoryEvent> GetAllEvents()
+        public IReadOnlyList<StoryEvent> GetAllEvents()
         {
             return new List<StoryEvent>(_events);
         }

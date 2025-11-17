@@ -41,7 +41,7 @@ namespace SlimeLab.Systems
             _events.RemoveAll(e => e.IsTriggered);
         }
 
-        public List<RandomEvent> GetAllEvents()
+        public IReadOnlyList<RandomEvent> GetAllEvents()
         {
             return new List<RandomEvent>(_events);
         }

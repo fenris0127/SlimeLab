@@ -5,6 +5,38 @@ namespace SlimeLab.Core
 {
     public class Slime
     {
+        // Base stat constants
+        private const int BASE_HP = 50;
+        private const int BASE_ATTACK = 10;
+        private const int BASE_DEFENSE = 5;
+        private const int BASE_SPEED = 8;
+
+        // Element modifier constants
+        private const int FIRE_ATTACK_BONUS = 5;
+        private const int FIRE_SPEED_BONUS = 2;
+        private const int WATER_HP_BONUS = 20;
+        private const int WATER_DEFENSE_BONUS = 3;
+        private const int ELECTRIC_HP_PENALTY = 10;
+        private const int ELECTRIC_ATTACK_BONUS = 3;
+        private const int ELECTRIC_SPEED_BONUS = 5;
+
+        // Hunger and mood thresholds
+        private const int HUNGER_MAX = 100;
+        private const int HUNGER_UNHAPPY_THRESHOLD = 91;
+        private const int HUNGER_SAD_THRESHOLD = 61;
+
+        // Evolution constants
+        private const int MIN_EVOLUTION_LEVEL = 10;
+        private const int DEFAULT_EVOLUTION_HP_BOOST = 20;
+        private const int DEFAULT_EVOLUTION_ATTACK_BOOST = 10;
+        private const int DEFAULT_EVOLUTION_DEFENSE_BOOST = 5;
+        private const int DEFAULT_EVOLUTION_SPEED_BOOST = 5;
+        private const int MIN_AFFINITY_FOR_EVOLUTION = 70;
+
+        // Experience and affinity constants
+        private const int AFFINITY_MAX = 100;
+        private const int FEEDING_EXPERIENCE_DIVISOR = 2;
+
         public string ID { get; private set; }
         public string Name { get; private set; }
         public ElementType Element { get; private set; }
@@ -32,30 +64,24 @@ namespace SlimeLab.Core
 
         private SlimeStats InitializeStats(ElementType element)
         {
-            // Base stats for level 1 slime
-            int baseHP = 50;
-            int baseAttack = 10;
-            int baseDefense = 5;
-            int baseSpeed = 8;
-
             // Element-specific modifiers
             switch (element)
             {
                 case ElementType.Fire:
-                    return new SlimeStats(baseHP, baseAttack + 5, baseDefense, baseSpeed + 2);
+                    return new SlimeStats(BASE_HP, BASE_ATTACK + FIRE_ATTACK_BONUS, BASE_DEFENSE, BASE_SPEED + FIRE_SPEED_BONUS);
                 case ElementType.Water:
-                    return new SlimeStats(baseHP + 20, baseAttack, baseDefense + 3, baseSpeed);
+                    return new SlimeStats(BASE_HP + WATER_HP_BONUS, BASE_ATTACK, BASE_DEFENSE + WATER_DEFENSE_BONUS, BASE_SPEED);
                 case ElementType.Electric:
-                    return new SlimeStats(baseHP - 10, baseAttack + 3, baseDefense, baseSpeed + 5);
+                    return new SlimeStats(BASE_HP - ELECTRIC_HP_PENALTY, BASE_ATTACK + ELECTRIC_ATTACK_BONUS, BASE_DEFENSE, BASE_SPEED + ELECTRIC_SPEED_BONUS);
                 case ElementType.Neutral:
                 default:
-                    return new SlimeStats(baseHP, baseAttack, baseDefense, baseSpeed);
+                    return new SlimeStats(BASE_HP, BASE_ATTACK, BASE_DEFENSE, BASE_SPEED);
             }
         }
 
         public void IncreaseHunger(int amount)
         {
-            Hunger = Math.Min(Hunger + amount, 100);
+            Hunger = Math.Min(Hunger + amount, HUNGER_MAX);
             UpdateMood();
         }
 
@@ -64,18 +90,18 @@ namespace SlimeLab.Core
             Hunger = Math.Max(Hunger - amount, 0);
 
             // Gain experience from feeding
-            Experience += amount / 2;
+            Experience += amount / FEEDING_EXPERIENCE_DIVISOR;
 
             UpdateMood();
         }
 
         private void UpdateMood()
         {
-            if (Hunger >= 91)
+            if (Hunger >= HUNGER_UNHAPPY_THRESHOLD)
             {
                 Mood = SlimeMood.Unhappy;
             }
-            else if (Hunger >= 61)
+            else if (Hunger >= HUNGER_SAD_THRESHOLD)
             {
                 Mood = SlimeMood.Sad;
             }
@@ -110,14 +136,14 @@ namespace SlimeLab.Core
 
         public bool CanEvolve()
         {
-            return Level >= 10;
+            return Level >= MIN_EVOLUTION_LEVEL;
         }
 
         public void Evolve(EvolutionItem item)
         {
             if (!CanEvolve())
             {
-                throw new InvalidOperationException($"Slime must be at least level 10 to evolve. Current level: {Level}");
+                throw new InvalidOperationException($"Slime must be at least level {MIN_EVOLUTION_LEVEL} to evolve. Current level: {Level}");
             }
 
             // Check if evolution item matches slime element (optional, but recommended)
@@ -147,19 +173,19 @@ namespace SlimeLab.Core
                 // Default evolution if no path found
                 Name = $"Evolved {Name}";
                 Level += 1;
-                Stats.BoostStats(20, 10, 5, 5);
+                Stats.BoostStats(DEFAULT_EVOLUTION_HP_BOOST, DEFAULT_EVOLUTION_ATTACK_BOOST, DEFAULT_EVOLUTION_DEFENSE_BOOST, DEFAULT_EVOLUTION_SPEED_BOOST);
             }
         }
 
         // Affinity management
         public void SetAffinity(int affinity)
         {
-            Affinity = Math.Clamp(affinity, 0, 100);
+            Affinity = Math.Clamp(affinity, 0, AFFINITY_MAX);
         }
 
         public void IncreaseAffinity(int amount)
         {
-            Affinity = Math.Min(Affinity + amount, 100);
+            Affinity = Math.Min(Affinity + amount, AFFINITY_MAX);
         }
 
         // Environment-based evolution
@@ -178,21 +204,23 @@ namespace SlimeLab.Core
                 throw new InvalidOperationException("Cannot evolve in this environment");
             }
 
-            // Get special evolution registry
             var registry = new Systems.SpecialEvolutionRegistry();
             var specialEvolution = registry.GetEnvironmentEvolution(Element, environment);
+            ApplySpecialEvolution(specialEvolution);
+        }
 
-            if (specialEvolution != null)
-            {
-                Name = specialEvolution.TargetName;
-                Level += 1;
-                Stats.BoostStats(
-                    specialEvolution.HPBoost,
-                    specialEvolution.AttackBoost,
-                    specialEvolution.DefenseBoost,
-                    specialEvolution.SpeedBoost
-                );
-            }
+        private void ApplySpecialEvolution(Systems.SpecialEvolutionData evolution)
+        {
+            if (evolution == null) return;
+
+            Name = evolution.TargetName;
+            Level += 1;
+            Stats.BoostStats(
+                evolution.HPBoost,
+                evolution.AttackBoost,
+                evolution.DefenseBoost,
+                evolution.SpeedBoost
+            );
         }
 
         private bool IsElementMatchedToEnvironment(ElementType element, Systems.EnvironmentType environment)
@@ -228,18 +256,7 @@ namespace SlimeLab.Core
 
             var registry = new Systems.SpecialEvolutionRegistry();
             var timeEvolution = registry.GetTimeBasedEvolution(item, currentTime);
-
-            if (timeEvolution != null)
-            {
-                Name = timeEvolution.TargetName;
-                Level += 1;
-                Stats.BoostStats(
-                    timeEvolution.HPBoost,
-                    timeEvolution.AttackBoost,
-                    timeEvolution.DefenseBoost,
-                    timeEvolution.SpeedBoost
-                );
-            }
+            ApplySpecialEvolution(timeEvolution);
         }
 
         // Affinity-based evolution
@@ -247,32 +264,20 @@ namespace SlimeLab.Core
         {
             if (!CanEvolve()) return false;
 
-            // Require high affinity (70+)
-            return Affinity >= 70;
+            // Require high affinity
+            return Affinity >= MIN_AFFINITY_FOR_EVOLUTION;
         }
 
         public void EvolveWithAffinity(EvolutionItem item)
         {
             if (!CanEvolveWithAffinity(item))
             {
-                throw new InvalidOperationException($"Affinity too low for evolution. Current: {Affinity}, Required: 70");
+                throw new InvalidOperationException($"Affinity too low for evolution. Current: {Affinity}, Required: {MIN_AFFINITY_FOR_EVOLUTION}");
             }
 
             var registry = new Systems.SpecialEvolutionRegistry();
             var affinityEvolution = registry.GetAffinityEvolution(item);
-
-            if (affinityEvolution != null)
-            {
-                Name = affinityEvolution.TargetName;
-                Level += 1;
-                // Affinity evolution gives bigger stat boosts
-                Stats.BoostStats(
-                    affinityEvolution.HPBoost,
-                    affinityEvolution.AttackBoost,
-                    affinityEvolution.DefenseBoost,
-                    affinityEvolution.SpeedBoost
-                );
-            }
+            ApplySpecialEvolution(affinityEvolution);
         }
 
         // Resource gathering

@@ -13,14 +13,8 @@ namespace SlimeLab.Core
 
         public void Add(Resource resource)
         {
-            if (_resources.ContainsKey(resource.Type))
-            {
-                _resources[resource.Type] += resource.Amount;
-            }
-            else
-            {
-                _resources[resource.Type] = resource.Amount;
-            }
+            _resources.TryGetValue(resource.Type, out var current);
+            _resources[resource.Type] = current + resource.Amount;
         }
 
         public void Consume(ResourceType type, int amount)
@@ -37,7 +31,7 @@ namespace SlimeLab.Core
 
         public int GetAmount(ResourceType type)
         {
-            return _resources.ContainsKey(type) ? _resources[type] : 0;
+            return _resources.TryGetValue(type, out var amount) ? amount : 0;
         }
     }
 }

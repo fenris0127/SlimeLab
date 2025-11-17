@@ -49,7 +49,7 @@ namespace SlimeLab.Systems
 
         public Slime GetSlime(string slimeID)
         {
-            return _slimeStorage.ContainsKey(slimeID) ? _slimeStorage[slimeID] : null;
+            return _slimeStorage.TryGetValue(slimeID, out var slime) ? slime : null;
         }
 
         public void AddContainmentUnit(ContainmentUnit unit)
@@ -74,12 +74,12 @@ namespace SlimeLab.Systems
             return null;
         }
 
-        public List<ContainmentUnit> GetAllContainmentUnits()
+        public IReadOnlyList<ContainmentUnit> GetAllContainmentUnits()
         {
             return new List<ContainmentUnit>(_containmentUnits);
         }
 
-        public List<Slime> GetAllSlimes()
+        public IReadOnlyList<Slime> GetAllSlimes()
         {
             return new List<Slime>(_slimeStorage.Values);
         }

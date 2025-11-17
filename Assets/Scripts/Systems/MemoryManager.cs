@@ -13,22 +13,18 @@ namespace SlimeLab.Systems
 
         public void RecordAllocation(string type, long bytes)
         {
-            if (!_allocations.ContainsKey(type))
-            {
-                _allocations[type] = 0;
-            }
-
-            _allocations[type] += bytes;
+            _allocations.TryGetValue(type, out var current);
+            _allocations[type] = current + bytes;
         }
 
         public void RecordDeallocation(string type, long bytes)
         {
-            if (!_allocations.ContainsKey(type))
+            if (!_allocations.TryGetValue(type, out var current))
             {
                 return;
             }
 
-            _allocations[type] -= bytes;
+            _allocations[type] = current - bytes;
 
             if (_allocations[type] <= 0)
             {
@@ -38,7 +34,7 @@ namespace SlimeLab.Systems
 
         public long GetTotalAllocated(string type)
         {
-            return _allocations.ContainsKey(type) ? _allocations[type] : 0;
+            return _allocations.TryGetValue(type, out var allocated) ? allocated : 0;
         }
 
         public long GetTotalMemoryUsage()
