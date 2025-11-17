@@ -14,12 +14,28 @@ namespace SlimeLab.Systems
 
         private const int DEFAULT_BREEDING_DURATION = 100;
         private const int BREEDING_FOOD_COST = 50;
+        private const float DEFAULT_MUTATION_RATE = 0.05f; // 5% chance
+
+        private GeneComboRegistry _geneComboRegistry;
+        private float _mutationRate;
 
         public BreedingChamber()
         {
             BreedingDuration = DEFAULT_BREEDING_DURATION;
             BreedingProgress = 0;
             IsBreeding = false;
+            _mutationRate = DEFAULT_MUTATION_RATE;
+            _geneComboRegistry = null;
+        }
+
+        public void SetGeneComboRegistry(GeneComboRegistry registry)
+        {
+            _geneComboRegistry = registry;
+        }
+
+        public void SetMutationRate(float rate)
+        {
+            _mutationRate = rate;
         }
 
         public void SetParents(Slime parent1, Slime parent2)
@@ -155,6 +171,40 @@ namespace SlimeLab.Systems
                 // Create a new gene instance for the offspring
                 offspring.AddGene(new Gene(selectedGene.Name, selectedGene.Type));
             }
+
+            // Check for gene combinations
+            if (_geneComboRegistry != null)
+            {
+                var comboGene = _geneComboRegistry.CheckForCombo(offspring.Genes);
+                if (comboGene != null)
+                {
+                    offspring.AddGene(comboGene);
+                }
+            }
+
+            // Apply mutation
+            if (random.NextDouble() < _mutationRate)
+            {
+                ApplyMutation(offspring, random);
+            }
+        }
+
+        private void ApplyMutation(Slime offspring, Random random)
+        {
+            // Generate a random mutation gene
+            string[] mutationTypes = new string[]
+            {
+                "Mutation Alpha",
+                "Mutation Beta",
+                "Mutation Gamma",
+                "Mutation Delta",
+                "Mutation Omega"
+            };
+
+            string mutationName = mutationTypes[random.Next(mutationTypes.Length)];
+            GeneType mutationType = random.Next(2) == 0 ? GeneType.Dominant : GeneType.Recessive;
+
+            offspring.AddGene(new Gene(mutationName, mutationType));
         }
     }
 }

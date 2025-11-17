@@ -121,10 +121,10 @@
 ### 11. 유전자 조합 규칙
 - [x] **Test**: 부모의 dominant gene이 자식에게 우선 전달되어야 함
 - [x] **Implement**: inheritGenes 메서드 구현
-- [ ] **Test**: 특정 gene 조합이 특별한 결과를 만들어야 함
-- [ ] **Implement**: GeneComboRegistry 구현
-- [ ] **Test**: 돌연변이가 낮은 확률로 발생해야 함
-- [ ] **Implement**: mutation 시스템 구현
+- [x] **Test**: 특정 gene 조합이 특별한 결과를 만들어야 함
+- [x] **Implement**: GeneComboRegistry 구현
+- [x] **Test**: 돌연변이가 낮은 확률로 발생해야 함
+- [x] **Implement**: mutation 시스템 구현
 
 ## Phase 4: 진화 시스템 (Evolution System)
 

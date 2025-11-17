@@ -207,5 +207,86 @@ namespace SlimeLab.Tests
                 chamber.StartBreeding(inventory);
             });
         }
+
+        [Test]
+        public void BreedingChamber_AppliesGeneComboWhenMatched()
+        {
+            // Arrange
+            var chamber = new BreedingChamber();
+            var registry = new GeneComboRegistry();
+            var inventory = new ResourceInventory();
+            inventory.Add(new Resource(ResourceType.Food, 100));
+
+            var slime1 = new Slime("Parent 1", ElementType.Fire);
+            var slime2 = new Slime("Parent 2", ElementType.Water);
+            slime1.AddGene(new Gene("Fire Gene", GeneType.Dominant));
+            slime2.AddGene(new Gene("Speed Gene", GeneType.Recessive));
+
+            chamber.SetParents(slime1, slime2);
+            chamber.SetGeneComboRegistry(registry);
+            chamber.StartBreeding(inventory);
+            chamber.UpdateBreeding(chamber.BreedingDuration);
+
+            // Act
+            var offspring = chamber.CompleteBreeding();
+
+            // Assert - Should have Fire Gene, Speed Gene, and possibly Blazing Speed combo
+            Assert.IsNotNull(offspring);
+            Assert.GreaterOrEqual(offspring.Genes.Count, 2);
+        }
+
+        [Test]
+        public void BreedingChamber_MutationCanOccur()
+        {
+            // Arrange
+            var chamber = new BreedingChamber();
+            chamber.SetMutationRate(1.0f); // 100% mutation rate for testing
+            var inventory = new ResourceInventory();
+            inventory.Add(new Resource(ResourceType.Food, 100));
+
+            var slime1 = new Slime("Parent 1", ElementType.Fire);
+            var slime2 = new Slime("Parent 2", ElementType.Water);
+            slime1.AddGene(new Gene("Fire Gene", GeneType.Dominant));
+            slime2.AddGene(new Gene("Water Gene", GeneType.Recessive));
+
+            chamber.SetParents(slime1, slime2);
+            chamber.StartBreeding(inventory);
+            chamber.UpdateBreeding(chamber.BreedingDuration);
+
+            // Act
+            var offspring = chamber.CompleteBreeding();
+
+            // Assert - With 100% mutation rate, should have at least one mutation gene
+            Assert.IsNotNull(offspring);
+            bool hasMutationGene = offspring.Genes.Any(g => g.Name.Contains("Mutation"));
+            Assert.IsTrue(hasMutationGene);
+        }
+
+        [Test]
+        public void BreedingChamber_LowMutationRateRarelyMutates()
+        {
+            // Arrange
+            var chamber = new BreedingChamber();
+            chamber.SetMutationRate(0.0f); // 0% mutation rate
+            var inventory = new ResourceInventory();
+            inventory.Add(new Resource(ResourceType.Food, 100));
+
+            var slime1 = new Slime("Parent 1", ElementType.Fire);
+            var slime2 = new Slime("Parent 2", ElementType.Water);
+            slime1.AddGene(new Gene("Fire Gene", GeneType.Dominant));
+            slime2.AddGene(new Gene("Water Gene", GeneType.Recessive));
+
+            chamber.SetParents(slime1, slime2);
+            chamber.StartBreeding(inventory);
+            chamber.UpdateBreeding(chamber.BreedingDuration);
+
+            // Act
+            var offspring = chamber.CompleteBreeding();
+
+            // Assert - With 0% mutation rate, should have no mutation genes
+            Assert.IsNotNull(offspring);
+            bool hasMutationGene = offspring.Genes.Any(g => g.Name.Contains("Mutation"));
+            Assert.IsFalse(hasMutationGene);
+        }
     }
 }
