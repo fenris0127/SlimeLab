@@ -63,16 +63,16 @@
 ## Phase 2: 연구소 시스템 (Laboratory System)
 
 ### 6. Laboratory 기본 구현
-- [ ] **Test**: Laboratory가 ID와 이름을 가져야 함
-- [ ] **Implement**: Laboratory 클래스 생성
-- [ ] **Test**: Laboratory가 슬라임을 보관할 수 있어야 함
-- [ ] **Implement**: slimeStorage 컬렉션 추가
-- [ ] **Test**: Laboratory가 최대 보관 용량을 가져야 함
-- [ ] **Implement**: maxCapacity 속성 추가
-- [ ] **Test**: Laboratory가 슬라임을 추가할 수 있어야 함
-- [ ] **Implement**: addSlime 메서드 구현
-- [ ] **Test**: 용량 초과 시 예외를 던져야 함
-- [ ] **Implement**: CapacityExceededError 구현
+- [x] **Test**: Laboratory가 ID와 이름을 가져야 함
+- [x] **Implement**: Laboratory 클래스 생성
+- [x] **Test**: Laboratory가 슬라임을 보관할 수 있어야 함
+- [x] **Implement**: slimeStorage 컬렉션 추가
+- [x] **Test**: Laboratory가 최대 보관 용량을 가져야 함
+- [x] **Implement**: maxCapacity 속성 추가
+- [x] **Test**: Laboratory가 슬라임을 추가할 수 있어야 함
+- [x] **Implement**: addSlime 메서드 구현
+- [x] **Test**: 용량 초과 시 예외를 던져야 함
+- [x] **Implement**: CapacityExceededError 구현
 
 ### 7. Containment Unit (슬라임 격납 시설)
 - [ ] **Test**: ContainmentUnit이 하나의 슬라임을 보관할 수 있어야 함
