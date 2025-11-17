@@ -225,12 +225,12 @@
 ## Phase 8: 이벤트 시스템 (Event System)
 
 ### 23. Random Events
-- [ ] **Test**: RandomEvent가 확률적으로 발생해야 함
-- [ ] **Implement**: EventScheduler 클래스
-- [ ] **Test**: 이벤트가 선택지를 제공해야 함
-- [ ] **Implement**: EventChoice 시스템
-- [ ] **Test**: 선택에 따라 다른 결과가 발생해야 함
-- [ ] **Implement**: EventOutcome 처리
+- [x] **Test**: RandomEvent가 확률적으로 발생해야 함
+- [x] **Implement**: EventScheduler 클래스
+- [x] **Test**: 이벤트가 선택지를 제공해야 함
+- [x] **Implement**: EventChoice 시스템
+- [x] **Test**: 선택에 따라 다른 결과가 발생해야 함
+- [x] **Implement**: EventOutcome 처리
 
 ### 24. Story Events
 - [ ] **Test**: 스토리 진행도에 따라 이벤트가 트리거되어야 함
