@@ -14,6 +14,7 @@ namespace SlimeLab.Core
         public int Hunger { get; private set; }
         public SlimeMood Mood { get; private set; }
         public List<Gene> Genes { get; private set; }
+        public int Affinity { get; private set; }
 
         public Slime(string name = "Unnamed Slime", ElementType element = ElementType.Neutral)
         {
@@ -26,6 +27,7 @@ namespace SlimeLab.Core
             Hunger = 0;
             Mood = SlimeMood.Happy;
             Genes = new List<Gene>();
+            Affinity = 0;
         }
 
         private SlimeStats InitializeStats(ElementType element)
@@ -146,6 +148,130 @@ namespace SlimeLab.Core
                 Name = $"Evolved {Name}";
                 Level += 1;
                 Stats.BoostStats(20, 10, 5, 5);
+            }
+        }
+
+        // Affinity management
+        public void SetAffinity(int affinity)
+        {
+            Affinity = Math.Clamp(affinity, 0, 100);
+        }
+
+        public void IncreaseAffinity(int amount)
+        {
+            Affinity = Math.Min(Affinity + amount, 100);
+        }
+
+        // Environment-based evolution
+        public bool CanEvolveInEnvironment(Systems.EnvironmentType environment, EvolutionItem item)
+        {
+            if (!CanEvolve()) return false;
+
+            // Check if element matches environment
+            return IsElementMatchedToEnvironment(Element, environment);
+        }
+
+        public void EvolveInEnvironment(Systems.EnvironmentType environment, EvolutionItem item)
+        {
+            if (!CanEvolveInEnvironment(environment, item))
+            {
+                throw new InvalidOperationException("Cannot evolve in this environment");
+            }
+
+            // Get special evolution registry
+            var registry = new Systems.SpecialEvolutionRegistry();
+            var specialEvolution = registry.GetEnvironmentEvolution(Element, environment);
+
+            if (specialEvolution != null)
+            {
+                Name = specialEvolution.TargetName;
+                Level += 1;
+                Stats.BoostStats(
+                    specialEvolution.HPBoost,
+                    specialEvolution.AttackBoost,
+                    specialEvolution.DefenseBoost,
+                    specialEvolution.SpeedBoost
+                );
+            }
+        }
+
+        private bool IsElementMatchedToEnvironment(ElementType element, Systems.EnvironmentType environment)
+        {
+            switch (environment)
+            {
+                case Systems.EnvironmentType.Volcanic:
+                    return element == ElementType.Fire;
+                case Systems.EnvironmentType.Aquatic:
+                    return element == ElementType.Water;
+                case Systems.EnvironmentType.Storm:
+                    return element == ElementType.Electric;
+                default:
+                    return false;
+            }
+        }
+
+        // Time-based evolution
+        public bool CanEvolveAtTime(EvolutionItem item, DateTime currentTime)
+        {
+            if (!CanEvolve()) return false;
+
+            var registry = new Systems.SpecialEvolutionRegistry();
+            return registry.CanEvolveAtTime(item, currentTime);
+        }
+
+        public void EvolveAtTime(EvolutionItem item, DateTime currentTime)
+        {
+            if (!CanEvolveAtTime(item, currentTime))
+            {
+                throw new InvalidOperationException("Cannot evolve at this time");
+            }
+
+            var registry = new Systems.SpecialEvolutionRegistry();
+            var timeEvolution = registry.GetTimeBasedEvolution(item, currentTime);
+
+            if (timeEvolution != null)
+            {
+                Name = timeEvolution.TargetName;
+                Level += 1;
+                Stats.BoostStats(
+                    timeEvolution.HPBoost,
+                    timeEvolution.AttackBoost,
+                    timeEvolution.DefenseBoost,
+                    timeEvolution.SpeedBoost
+                );
+            }
+        }
+
+        // Affinity-based evolution
+        public bool CanEvolveWithAffinity(EvolutionItem item)
+        {
+            if (!CanEvolve()) return false;
+
+            // Require high affinity (70+)
+            return Affinity >= 70;
+        }
+
+        public void EvolveWithAffinity(EvolutionItem item)
+        {
+            if (!CanEvolveWithAffinity(item))
+            {
+                throw new InvalidOperationException($"Affinity too low for evolution. Current: {Affinity}, Required: 70");
+            }
+
+            var registry = new Systems.SpecialEvolutionRegistry();
+            var affinityEvolution = registry.GetAffinityEvolution(item);
+
+            if (affinityEvolution != null)
+            {
+                Name = affinityEvolution.TargetName;
+                Level += 1;
+                // Affinity evolution gives bigger stat boosts
+                Stats.BoostStats(
+                    affinityEvolution.HPBoost,
+                    affinityEvolution.AttackBoost,
+                    affinityEvolution.DefenseBoost,
+                    affinityEvolution.SpeedBoost
+                );
             }
         }
     }

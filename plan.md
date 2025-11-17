@@ -139,12 +139,12 @@
 - [x] **Implement**: EvolutionTree 데이터 구조 구현
 
 ### 13. 특수 진화 조건
-- [ ] **Test**: 환경 조건에 따른 진화가 가능해야 함
-- [ ] **Implement**: EnvironmentEvolution 구현
-- [ ] **Test**: 특정 시간대에만 가능한 진화가 있어야 함
-- [ ] **Implement**: TimeBasedEvolution 구현
-- [ ] **Test**: 친밀도 기반 진화가 가능해야 함
-- [ ] **Implement**: AffinityEvolution 구현
+- [x] **Test**: 환경 조건에 따른 진화가 가능해야 함
+- [x] **Implement**: EnvironmentEvolution 구현
+- [x] **Test**: 특정 시간대에만 가능한 진화가 있어야 함
+- [x] **Implement**: TimeBasedEvolution 구현
+- [x] **Test**: 친밀도 기반 진화가 가능해야 함
+- [x] **Implement**: AffinityEvolution 구현
 
 ## Phase 5: 탐험 시스템 (Exploration System)
 
