@@ -165,14 +165,14 @@
 - [x] **Implement**: startExpedition 메서드 구현
 
 ### 16. 전투 시스템
-- [ ] **Test**: Battle이 턴 기반으로 진행되어야 함
-- [ ] **Implement**: Battle 클래스 및 턴 시스템
-- [ ] **Test**: 슬라임 속도에 따라 행동 순서가 결정되어야 함
-- [ ] **Implement**: TurnOrder 계산 로직
-- [ ] **Test**: 기본 공격이 가능해야 함
-- [ ] **Implement**: AttackAction 구현
-- [ ] **Test**: 속성 상성이 데미지에 영향을 줘야 함
-- [ ] **Implement**: ElementalAdvantage 시스템
+- [x] **Test**: Battle이 턴 기반으로 진행되어야 함
+- [x] **Implement**: Battle 클래스 및 턴 시스템
+- [x] **Test**: 슬라임 속도에 따라 행동 순서가 결정되어야 함
+- [x] **Implement**: TurnOrder 계산 로직
+- [x] **Test**: 기본 공격이 가능해야 함
+- [x] **Implement**: AttackAction 구현
+- [x] **Test**: 속성 상성이 데미지에 영향을 줘야 함
+- [x] **Implement**: ElementalAdvantage 시스템
 
 ### 17. 자원 수집
 - [ ] **Test**: Zone에서 자원을 발견할 수 있어야 함

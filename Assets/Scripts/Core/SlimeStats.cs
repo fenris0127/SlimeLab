@@ -22,5 +22,19 @@ namespace SlimeLab.Core
             Defense += defenseBoost;
             Speed += speedBoost;
         }
+
+        public void TakeDamage(int damage)
+        {
+            HP -= damage;
+            if (HP < 0)
+            {
+                HP = 0;
+            }
+        }
+
+        public bool IsAlive()
+        {
+            return HP > 0;
+        }
     }
 }
